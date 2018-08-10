@@ -1,0 +1,186 @@
+:root {
+  margin: 0;
+  padding: 0;
+  color: #4d4d4d;
+  box-sizing: border-box;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+.fas {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-style: none;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+/* 
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  background-color: #fafafa;
+  border: 1px solid #cacece;
+
+  padding: 9px;
+  border-radius: 10px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #e9ecee;
+  border: 1px solid #adb8c0;
+  border-radius: 10px;
+  color: #99a1a7;
+}
+input[type="checkbox"]:checked:after {
+  content: "\2714";
+  font-size: 14px;
+  color: #99a1a7;
+  border-radius: 10px;
+} */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Pontano Sans", sans-serif;
+  /* color: white; */
+}
+
+button {
+  font-family: "Pontano Sans", sans-serif;
+}
+a {
+  cursor: pointer;
+}
+.banner {
+  width: 100vw;
+  height: 60px;
+  background-color: rgb(8, 95, 117);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.title {
+  font-family: "Handlee", cursive;
+  color: white;
+  font-size: 20px;
+}
+.header {
+  max-width: 1230px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+
+  align-items: center;
+}
+
+.header__logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5em;
+}
+.header__logo__img {
+  font-size: 40px;
+  color: white;
+}
+
+.header__nav {
+  flex: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header__nav__link {
+  text-decoration: none;
+  /* text-transform: uppercase; */
+  color: white;
+  cursor: pointer;
+  padding: 0 0.5em;
+}
+
+.header__nav__link:hover {
+  color: lightgrey;
+}
+
+@media only screen and (max-width: 570px) {
+  .header__nav__link:nth-child(1) {
+    display: none;
+  }
+}
+.banner {
+  width: 100vw;
+  height: auto;
+}
+
+main {
+  max-width: 1230px;
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  width: 410px;
+}
+
+.day__title {
+  font-family: "Handlee", cursive;
+}
+
+.notepad {
+  width: 410px;
+  box-sizing: border-box;
+  margin-top: 50px;
+}
+
+.notepad__title {
+  font-family: "Handlee", cursive;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+textarea {
+  background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+  width: 300px;
+  height: 300px;
+  font: normal 14px verdana;
+  line-height: 25px;
+  box-sizing: border-box;
+  padding-left: 105px;
+  border: none;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+
+.left-block {
+  width: 410px;
+}
+.left-block__week {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  min-width: 150px;
+  height: 70%;
+  margin-top: 50px;
+}
+.left-block__week a:hover {
+  text-decoration: underline;
+}
+
+.left-block__week__title {
+  font-family: "Handlee", cursive;
+  margin: 0;
+  padding: 0;
+}

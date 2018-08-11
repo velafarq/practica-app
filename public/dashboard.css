@@ -21,28 +21,6 @@ ul {
   list-style: none;
   padding: 0;
 }
-/* 
-input[type="checkbox"] {
-  -webkit-appearance: none;
-  background-color: #fafafa;
-  border: 1px solid #cacece;
-
-  padding: 9px;
-  border-radius: 10px;
-}
-
-input[type="checkbox"]:checked {
-  background-color: #e9ecee;
-  border: 1px solid #adb8c0;
-  border-radius: 10px;
-  color: #99a1a7;
-}
-input[type="checkbox"]:checked:after {
-  content: "\2714";
-  font-size: 14px;
-  color: #99a1a7;
-  border-radius: 10px;
-} */
 
 body {
   margin: 0;

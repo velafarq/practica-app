@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import "./index.css";
+
+import store from "./store";
 import App from "./components/App";
 import registerServiceWorker from "./registerServiceWorker";
 
+import "./index.css";
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
     <Router>
       <App />
     </Router>

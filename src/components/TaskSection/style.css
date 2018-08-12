@@ -1,0 +1,83 @@
+.todo {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.todo__item {
+  border-style: none;
+  height: 30px;
+  width: 80%;
+  font-size: 20px;
+  font-family: "Raleway", sans-serif;
+  border-style: solid;
+  border-width: 2px 0px 2px 2px;
+  border-color: rgb(224, 139, 11);
+  padding-left: 10px;
+  border-radius: 0px 0px 0px 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.todo__add {
+  border-style: none;
+  border-style: solid;
+  border-width: 2px 2px 2px 0px;
+  border-color: rgb(224, 139, 11);
+  border-radius: 0px 5px 0px 0px;
+  color: rgb(224, 139, 11);
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tasks {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.tasks__task {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid silver;
+  font-size: 25px;
+  color: ;
+}
+
+.tasks__task__del {
+  border-style: none;
+  font-size: 20px;
+  color: red;
+}
+
+.tasks__task__check {
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  background: none;
+}
+
+input[type="checkbox"] + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+.tasks__task__check:before {
+  content: "\f096";
+  font-size: 22px;
+  color: rgb(8, 95, 117);
+  font-family: FontAwesome;
+}
+
+input[type="checkbox"]:checked:before {
+  content: "\f046";
+}
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: #ccc;
+}

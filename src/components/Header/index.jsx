@@ -1,23 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
 import "./style.css";
 
 export default function Header(props) {
   return (
-    <header class="banner">
-      <div class="header">
-        <div class="header__logo">
-          <i class="far fa-calendar-check header__logo__img" />
+    <header className="banner">
+      <div className="header">
+        <div className="header__logo">
+          <i className="far fa-calendar-check header__logo__img" />
         </div>
-        <h1 class="title">practica</h1>
-        <nav class="header__nav">
-          <a href="#" class="header__nav__link">
+        <h1 className="title">practica</h1>
+        <nav className="header__nav">
+          <Link to="/dashboard" className="header__nav__link">
             dashboard
-          </a>
-          <a href="#" class="header__nav__link">
+          </Link>
+          <Link to="/" href="#" className="header__nav__link">
             logout
-          </a>
+          </Link>
         </nav>
       </div>
     </header>

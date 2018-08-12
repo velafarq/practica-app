@@ -1,0 +1,27 @@
+.day {
+  display: flex;
+  flex-direction: column;
+  width: 410px;
+}
+
+.day__title {
+  font-family: "Handlee", cursive;
+}
+.day__nav {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.day__nav__date {
+  margin: 0;
+}
+
+.day__nav__back,
+.day__nav__fward {
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 30px;
+  color: rgb(224, 139, 11);
+  cursor: pointer;
+}

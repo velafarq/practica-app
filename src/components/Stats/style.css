@@ -1,0 +1,22 @@
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 410px;
+}
+
+.day__title {
+  font-family: "Handlee", cursive;
+  font-size: 40px;
+}
+
+.day__stat {
+  font-size: 30px;
+  text-align: left;
+  padding-left: 25px;
+}
+
+.day__stat__num {
+  color: rgb(221, 89, 36);
+}

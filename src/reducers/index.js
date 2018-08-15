@@ -18,7 +18,7 @@ const taskReducer = (state = initialState, action) => {
       // board.lists = [];
       return Object.assign({}, state, {
         tasks: {
-          taskList: [task, ...state.tasks.taskList],
+          taskList: [...state.tasks.taskList, task],
           taskIndex: taskIndex
         }
       });
@@ -41,7 +41,11 @@ const taskReducer = (state = initialState, action) => {
       console.log("this is working", taskList);
       const updatedState = taskList.splice(action.id, 1);
       return Object.assign({}, state, {
-        updatedState
+        ...state,
+        taskList: {
+          ...taskList,
+          ...updatedState
+        }
       });
 
     default:

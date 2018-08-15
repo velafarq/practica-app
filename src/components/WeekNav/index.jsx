@@ -7,7 +7,7 @@ export default function WeekNav(props) {
     <Fragment>
       <section class="left-block">
         <section class="left-block__week">
-          <h3 class="left-block__week__title">Your Week</h3>
+          <h3 class="left-block__week__title">This Week</h3>
           <a>Monday</a>
           <a>Tuesday</a>
           <a>Wednesday</a>

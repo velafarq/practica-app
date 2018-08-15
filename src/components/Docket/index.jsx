@@ -8,7 +8,7 @@ export default function Docket(props) {
     <Fragment>
       <section className="today">
         <div className="today__block">
-          <h2 className="today__title">Today's scheduled tasks:</h2>
+          <h2 className="today__title">Today's tasks:</h2>
           <ul>
             <li>Scales</li>
             <li>lullaby of birdland</li>

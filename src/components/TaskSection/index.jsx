@@ -34,6 +34,7 @@ export class TaskSection extends React.Component {
     const tasks = this.props.tasks.taskList.map(task => (
       <li className="tasks__task" key={task.taskId}>
         <button
+          title="complete"
           id={task.taskId}
           className="tasks__task__check"
           onClick={() => this.handleCompleteTask(task.taskId)}
@@ -44,6 +45,7 @@ export class TaskSection extends React.Component {
           {task.todo}
         </label>
         <button
+          title="delete"
           className="tasks__task__del"
           onClick={() => this.props.dispatch(removeTask(task.taskId))}
         >

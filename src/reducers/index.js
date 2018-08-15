@@ -1,8 +1,14 @@
 import { ADD_TASK, COMPLETE_TASK, REMOVE_TASK } from "../actions/index";
 
-const initialState = { tasks: { taskIndex: 0, taskList: [] } };
+const initialState = {
+  tasks: {
+    taskIndex: 0,
+    taskList: []
+  }
+};
 
 const taskReducer = (state = initialState, action) => {
+  const taskList = state.tasks.taskList;
   switch (action.type) {
     case ADD_TASK:
       const task = action.payload;
@@ -16,18 +22,27 @@ const taskReducer = (state = initialState, action) => {
           taskIndex: taskIndex
         }
       });
+
     case COMPLETE_TASK:
-      if (state.tasks.taskList.taskId !== action.id) {
-        console.log("tnhis is the one", state.tasks.taskList[action.id]);
-        return state;
-      }
-    // const theTask = state.tasks.taskList[action.id];
+      return Object.assign({}, state, {
+        ...state,
+        taskList: {
+          ...taskList,
+          ...taskList.filter(todo => {
+            if (todo.taskId === action.id) {
+              todo.completed = !todo.completed;
+              console.log(todo);
+            }
+          })
+        }
+      });
 
-    // return Object.assign({}, state, {
-    //   tasks: {
-    //     taskList:
-
-    // });
+    case REMOVE_TASK:
+      console.log("this is working", taskList);
+      const updatedState = taskList.splice(action.id, 1);
+      return Object.assign({}, state, {
+        updatedState
+      });
 
     default:
       return state;

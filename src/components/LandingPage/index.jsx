@@ -57,7 +57,7 @@ export default function LandingPage(props) {
         </section>
       </section>
       <div className="block__entry">
-        {/* <RegisterForm /> */}
+        <RegisterForm />
         <div className="block__entry__alternate">
           <p>
             or

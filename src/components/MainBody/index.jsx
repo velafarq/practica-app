@@ -12,8 +12,10 @@ import "./style.css";
 export default function MainBody(props) {
   return (
     <Fragment>
-      <Route exact path="/dashboard/stats" component={Stats} />
-      <Route exact path="/dashboard/day" component={DayView} />
+      <div className="background">
+        <Route exact path="/dashboard/stats" component={Stats} />
+        <Route exact path="/dashboard/day" component={DayView} />
+      </div>
     </Fragment>
   );
 }

@@ -27,7 +27,7 @@ export class RegisterForm extends React.Component {
         role="form"
         aria-live="assertive"
       >
-        <h2 class="block__entry__form__title">Register</h2>
+        <h2 class="block__entry__form__title">REGISTER</h2>
         <div class="block__entry__form__input">
           <Field
             title="First name"

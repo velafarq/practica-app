@@ -14,7 +14,7 @@ export const completeTask = id => ({
 });
 
 export const REMOVE_TASK = "REMOVE_TASK";
-export const removeTask = task => ({
+export const removeTask = id => ({
   type: REMOVE_TASK,
-  task
+  id
 });

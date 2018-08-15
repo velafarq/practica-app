@@ -15,7 +15,7 @@ export default function DayView(props) {
 
         <section className="day">
           <div>
-            <h2 className="day__title">Today's scheduled tasks:</h2>
+            <h2 className="day__title">Today's tasks:</h2>
             <div className="day__nav">
               <i className="fas fa-backward day__nav__back" />
               <h3 className="day__nav__date">Tuesday, August 7th 2018</h3>

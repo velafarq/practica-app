@@ -15,7 +15,7 @@ import "./style.css";
 export default function Dashboard(props) {
   return (
     <Fragment>
-      <main>
+      <main className="background">
         <WeekNav />
         <Stats />
         <Docket />

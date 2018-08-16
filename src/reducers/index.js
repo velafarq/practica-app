@@ -1,51 +1,42 @@
 import { ADD_TASK, COMPLETE_TASK, REMOVE_TASK } from "../actions/index";
 
 const initialState = {
-  tasks: {
-    taskIndex: 0,
-    taskList: []
-  }
+  taskIndex: 0,
+  taskList: [],
+  notes: [],
+  practiceStatus: false,
+  practiceHours: 0,
+  goals: []
 };
 
 const taskReducer = (state = initialState, action) => {
-  const taskList = state.tasks.taskList;
+  const taskList = state.taskList;
   switch (action.type) {
     case ADD_TASK:
       const task = action.payload;
       const taskIndex = action.id;
       task.taskId = taskIndex;
       task.completed = false;
-      // board.lists = [];
       return Object.assign({}, state, {
-        tasks: {
-          taskList: [...state.tasks.taskList, task],
-          taskIndex: taskIndex
-        }
+        taskList: [...state.taskList, task],
+        taskIndex: taskIndex
       });
 
+      console.log(taskList);
     case COMPLETE_TASK:
       return Object.assign({}, state, {
-        ...state,
-        taskList: {
-          ...taskList,
-          ...taskList.filter(todo => {
-            if (todo.taskId === action.id) {
-              todo.completed = !todo.completed;
-              console.log(todo);
-            }
-          })
-        }
+        ...taskList.filter(todo => {
+          if (todo.taskId === action.id) {
+            todo.completed = !todo.completed;
+            console.log(todo);
+          }
+        })
       });
 
     case REMOVE_TASK:
-      console.log("this is working", taskList);
-      const updatedState = taskList.splice(action.id, 1);
+      // const updatedState = taskList.filter(todo => todo.taskId !== action.id);
       return Object.assign({}, state, {
-        ...state,
-        taskList: {
-          ...taskList,
-          ...updatedState
-        }
+        taskList: [taskList.filter(todo => todo.taskId !== action.id)]
       });
 
     default:

@@ -1,10 +1,19 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { completeTask, removeTask } from "../../actions/index";
+import { completeTask, removeTask, addTask } from "../../actions/index";
 import "./style.css";
 import TaskForm from "../TaskForm/index";
 
 export class TaskSection extends React.Component {
+  handleFormSubmit(event) {
+    event.preventDefault();
+
+    const value = this.input.value;
+    this.props.dispatch(addTask({ todo: value }));
+    this.input.value = "";
+    this.input.focus();
+    // console.log(this.props.taskList);
+  }
   handleCompleteTask(id) {
     document
       .getElementById(id)
@@ -30,8 +39,37 @@ export class TaskSection extends React.Component {
     }
   }
 
+  taskList(todo, index) {
+    return (
+      <li className="tasks__task" key={index}>
+        <button
+          title="complete"
+          id={todo.taskId}
+          className="tasks__task__check"
+          onClick={() => this.handleCompleteTask(todo.taskId)}
+        >
+          <i class="fas fa-check" />
+        </button>
+        <label id={`label ${todo.taskId}`} className="tasks__task__title">
+          {todo.todo}
+        </label>
+        <button
+          title="delete"
+          className="tasks__task__del"
+          onClick={e => this.handleRemove(e, index)}
+        >
+          <i className="fas fa-times" />
+        </button>
+      </li>
+    );
+  }
+  handleRemove(e, id) {
+    e.preventDefault();
+    this.props.dispatch(removeTask(id));
+  }
+
   render() {
-    const tasks = this.props.tasks.taskList.map(task => (
+    const tasks = this.props.taskList.map(task => (
       <li className="tasks__task" key={task.taskId}>
         <button
           title="complete"
@@ -47,7 +85,7 @@ export class TaskSection extends React.Component {
         <button
           title="delete"
           className="tasks__task__del"
-          onClick={() => this.props.dispatch(removeTask(task.taskId))}
+          onClick={e => this.handleRemove(e, task.taskId)}
         >
           <i className="fas fa-times" />
         </button>
@@ -56,8 +94,26 @@ export class TaskSection extends React.Component {
 
     return (
       <Fragment>
-        <TaskForm />
-        <ul className="tasks">{tasks}</ul>
+        <form onSubmit={e => this.handleFormSubmit(e)} className="todo">
+          <input
+            type="text"
+            className="todo__item"
+            name="q"
+            placeholder="Add task"
+            autoComplete="off"
+            ref={input => (this.input = input)}
+            required
+          />
+          <button type="submit" className="todo__add">
+            <i className="fas fa-plus" />
+          </button>
+        </form>
+        {
+          <ul className="tasks">
+            {this.props.taskList.map((todo, i) => this.taskList(todo, i))}
+          </ul>
+        }
+        {/* <ul className="tasks">{tasks}</ul> */}
         <div className="day__practice">
           <button
             id="practice-toggle"
@@ -74,7 +130,7 @@ export class TaskSection extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tasks: state.tasks
+  taskList: state.taskList
 });
 
 export default connect(mapStateToProps)(TaskSection);

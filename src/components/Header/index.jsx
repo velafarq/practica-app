@@ -16,7 +16,7 @@ export default function Header(props) {
           <Link to="/dashboard" className="header__nav__link">
             dashboard
           </Link>
-          <Link to="/" href="#" className="header__nav__link">
+          <Link to="/" className="header__nav__link">
             logout
           </Link>
         </nav>

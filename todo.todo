@@ -1,0 +1,25 @@
+☐ create reducer for register and login
+    ☐ is the user logged in
+    ☐ is the user registered
+    ☐ password
+    ☐ first name
+    ☐ last name
+    ☐ email address
+
+☐ create reducer and actions for stats
+    ☐ practice true/false
+    ☐ practice hours
+    ☐ no. of tasks completed
+    ☐ goals met
+    ☐ notes
+
+☐ Fix register/login form
+☐ fix delete item from list
+☐ create goals area
+
+
+
+Questions:
+    ☐ 1. Should the tasklist be within the
+    reducer for the stats to keep all the info together? Because the stats are 
+    based on all that stuff

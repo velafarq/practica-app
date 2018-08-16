@@ -112,7 +112,7 @@
   }
 }
 
-.block__entry {
+/* .block__entry {
   background-image: url("https://images.pexels.com/photos/6966/abstract-music-rock-bw.jpg?cs=srgb&dl=audio-black-and-white-black-and-white-6966.jpg&fm=jpg");
   height: 100vh;
   background-repeat: no-repeat;
@@ -139,9 +139,7 @@
   font-size: 2em;
   letter-spacing: 2px;
 
-  /* width: 15vh;
-  font-size: 2em;
-  border-bottom: 4px solid white; */
+
 }
 
 .block__entry__form__input {
@@ -205,7 +203,7 @@
   .block__entry__form__submit {
     font-size: 1.5em;
   }
-}
+} */
 
 /*https://images.pexels.com/photos/6966/abstract-music-rock-bw.jpg?cs=srgb&dl=audio-black-and-white-black-and-white-6966.jpg&fm=jpg
     https://images.pexels.com/photos/33597/guitar-classical-guitar-acoustic-guitar-electric-guitar.jpg?cs=srgb&dl=artist-guitar-guitarist-33597.jpg&fm=jpg/*/

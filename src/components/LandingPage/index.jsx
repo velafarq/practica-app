@@ -3,15 +3,16 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import "./style.css";
 import RegisterForm from "../RegisterForm/index";
+import LoginForm from "../LoginForm/index";
 
 export default function LandingPage(props) {
-  //do something else if logged in
-
   return (
     <Fragment>
       <section className="info">
         <h1 className="info__title">Practica</h1>
-        <button className="info__register">Register now!</button>
+        <Link to="/register" className="info__register">
+          Register now!
+        </Link>
       </section>
 
       <section className="about">
@@ -56,15 +57,6 @@ export default function LandingPage(props) {
           </div>
         </section>
       </section>
-      <div className="block__entry">
-        <RegisterForm />
-        <div className="block__entry__alternate">
-          <p>
-            or
-            <a id="alternate"> Login</a>
-          </p>
-        </div>
-      </div>
     </Fragment>
   );
 }

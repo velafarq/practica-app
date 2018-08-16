@@ -1,0 +1,94 @@
+.block__entry {
+  /* background-image: url("https://images.pexels.com/photos/6966/abstract-music-rock-bw.jpg?cs=srgb&dl=audio-black-and-white-black-and-white-6966.jpg&fm=jpg"); */
+  height: 80vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.block__entry__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.block__entry__form__title {
+  text-decoration: underline;
+  color: rgb(8, 95, 117);
+  font-size: 2em;
+  letter-spacing: 2px;
+
+  /* width: 15vh;
+    font-size: 2em;
+    border-bottom: 4px solid white; */
+}
+
+.block__entry__form__input {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+  text-align: right;
+  width: 100%;
+  height: 100%;
+  border-style: none;
+  color: white;
+  font-family: "Raleway", sans-serif;
+  border-bottom: 5px solid rgb(8, 95, 117);
+}
+
+.block__entry__form__input input {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  border-style: none;
+  color: black;
+  font-size: 1em;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.block__entry__form__submit {
+  border-style: none;
+  background-color: rgb(8, 95, 117);
+  width: 100%;
+  color: white;
+  font-size: 1 em;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.027), 0 6px 6px rgba(0, 0, 0, 0.23);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.block__entry__form__submit:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.block__entry__alternate {
+  font-size: 1.5em;
+}
+
+.block__entry__alternate #alternate:hover {
+  cursor: pointer;
+  color: rgb(8, 95, 117);
+}
+
+@media only screen and (min-width: 570px) {
+  .block__entry__form__input input {
+    font-size: 2em;
+  }
+
+  .block__entry__form__submit {
+    font-size: 1.5em;
+  }
+}

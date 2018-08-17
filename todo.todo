@@ -23,3 +23,17 @@ Questions:
     ☐ 1. Should the tasklist be within the
     reducer for the stats to keep all the info together? Because the stats are 
     based on all that stuff
+
+
+  
+  taskIndex: 0,
+  taskList: [
+      {
+          task: "",
+      completed: false
+        }
+  ],
+  notes: [],
+  practiceStatus: false,
+  practiceHours: 0,
+  goals: []

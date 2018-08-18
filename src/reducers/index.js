@@ -36,7 +36,7 @@ const taskReducer = (state = initialState, action) => {
     case REMOVE_TASK:
       // const updatedState = taskList.filter(todo => todo.taskId !== action.id);
       return Object.assign({}, state, {
-        taskList: [taskList.filter(todo => todo.taskId !== action.id)]
+        taskList: taskList.filter(todo => todo.taskId !== action.id)
       });
 
     default:

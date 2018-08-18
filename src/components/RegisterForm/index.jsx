@@ -5,24 +5,49 @@ import "./style.css";
 import { Link } from "react-router-dom";
 
 export class RegisterForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.firstName = React.createRef();
+    this.lastName = React.createRef();
+    this.email = React.createRef();
+    this.password = React.createRef();
+    this.state = {
+      errors: []
+    };
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    console.log("hey");
-    const email = this.email.value;
-    const firstName = this.firstName.value;
-    const lastName = this.lastName.value;
-    const password = this.password.value;
-    this.email.value = "";
-    this.firstName.value = "";
-    this.lastName.value = "";
-    this.password.value = "";
+    const firstName = this.firstName.current.value;
+    const lastName = this.lastName.current.value;
+    const email = this.email.current.value;
+    const password = this.password.current.value;
+    const errors = this.handleValidation(password);
 
-    console.log(email, firstName, lastName, password);
+    if (errors.length > 0) {
+      this.setState({ errors });
+      return;
+    }
+  }
+
+  handleValidation(password) {
+    const errors = [];
+
+    if (password.length < 10) {
+      errors.push("Password should be at least 8 characters long");
+    }
+    if (password.length > 70) {
+      errors.push("Password should not be over 70 characters long");
+    }
+    return errors;
   }
   render() {
+    const { errors } = this.state;
     return (
       <Fragment>
         <div className="block__entry">
+          <h2 class="block__entry__form__title">REGISTER</h2>
           <form
             onSubmit={e => this.handleSubmit(e)}
             className="block__entry__form"
@@ -32,7 +57,9 @@ export class RegisterForm extends React.Component {
             role="form"
             aria-live="assertive"
           >
-            <h2 class="block__entry__form__title">REGISTER</h2>
+            {errors.map(error => (
+              <p key={error}>{error} </p>
+            ))}
             <div class="block__entry__form__input">
               <input
                 title="First name"
@@ -41,7 +68,7 @@ export class RegisterForm extends React.Component {
                 placeholder="first name"
                 component="input"
                 required
-                ref={firstName => (this.firstName = firstName)}
+                ref={this.firstName}
               />
             </div>
             <div class="block__entry__form__input">
@@ -52,7 +79,7 @@ export class RegisterForm extends React.Component {
                 placeholder="last name"
                 component="input"
                 required
-                ref={lastName => (this.lastName = lastName)}
+                ref={this.lastName}
               />
             </div>
             <div class="block__entry__form__input">
@@ -64,7 +91,7 @@ export class RegisterForm extends React.Component {
                 id="user-email"
                 component="input"
                 required
-                ref={email => (this.email = email)}
+                ref={this.email}
               />
             </div>
             <div class="block__entry__form__input">
@@ -76,7 +103,7 @@ export class RegisterForm extends React.Component {
                 id="user-password"
                 component="input"
                 required
-                ref={password => (this.password = password)}
+                ref={this.password}
               />
             </div>
             <button type="submit" class="block__entry__form__submit">

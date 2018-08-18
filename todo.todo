@@ -28,12 +28,14 @@ Questions:
   
   taskIndex: 0,
   taskList: [
-      {
-          task: "",
-      completed: false
+        {
+        task: "",
+        completed: false
         }
   ],
-  notes: [],
+  notes: [{
+      notes: ""
+  }],
   practiceStatus: false,
   practiceHours: 0,
   goals: []

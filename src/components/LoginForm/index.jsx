@@ -6,22 +6,25 @@ import { Link } from "react-router-dom";
 import "../RegisterForm/style.css";
 
 export class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.email = React.createRef();
+    this.password = React.createRef();
+  }
   handleSubmit(e) {
     e.preventDefault();
-    console.log("ho");
-    const email = this.email.value;
 
-    const password = this.password.value;
-    this.email.value = "";
-
-    this.password.value = "";
-
+    const email = this.email.current.value;
+    const password = this.password.current.value;
     console.log(email, password);
   }
+
   render() {
     return (
       <Fragment>
         <div className="block__entry">
+          <h2 class="block__entry__form__title">LOGIN</h2>
           <form
             onSubmit={e => this.handleSubmit(e)}
             className="block__entry__form"
@@ -31,8 +34,6 @@ export class LoginForm extends React.Component {
             role="form"
             aria-live="assertive"
           >
-            <h2 class="block__entry__form__title">LOGIN</h2>
-
             <div class="block__entry__form__input">
               <input
                 title="email"
@@ -42,7 +43,7 @@ export class LoginForm extends React.Component {
                 id="user-email"
                 component="input"
                 required
-                ref={email => (this.email = email)}
+                ref={this.email}
               />
             </div>
             <div class="block__entry__form__input">
@@ -54,7 +55,7 @@ export class LoginForm extends React.Component {
                 id="user-password"
                 component="input"
                 required
-                ref={password => (this.password = password)}
+                ref={this.password}
               />
             </div>
             <button type="submit" class="block__entry__form__submit">

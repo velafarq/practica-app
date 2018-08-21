@@ -1,26 +1,34 @@
 .left-block {
-  width: 410px;
+  position: fixed;
+  left: 0;
+}
+/* width: 410px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
+  position: relative; */
+/* } */
 .left-block__week {
   box-shadow: 0 5px 10px #e6e6e6, 0 6px 6px #e6e6e6;
   border-radius: 5px;
-  background-color: #fafafa;
-  padding: 10px;
+
+  /* padding: 10px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 250px;
+  width: 100px;
   min-width: 150px;
-  height: 70%;
-  margin-top: 50px;
+  height: 95vh;
+  /* margin-top: 50px; */
+  /* padding-top: 60px; */
 }
 .left-block__week a {
   font-size: 25px;
+  display: block;
+  padding: 20px;
+  color: black;
 }
 .left-block__week a:hover {
   color: rgb(221, 89, 36);

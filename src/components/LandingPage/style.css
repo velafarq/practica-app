@@ -1,9 +1,7 @@
 .info {
   width: 100vw;
-  background-image: url("https://images.pexels.com/photos/33597/guitar-classical-guitar-acoustic-guitar-electric-guitar.jpg?cs=srgb&dl=artist-guitar-guitarist-33597.jpg&fm=jpg/");
-
-  /* background-image: url("https://images.pexels.com/photos/230800/pexels-photo-230800.jpeg?cs=srgb&dl=acoustic-acoustic-guitar-blur-230800.jpg&fm=jpg"), */
-  /* linear-gradient(black, black); */
+  /* background-image: url("https://images.pexels.com/photos/33597/guitar-classical-guitar-acoustic-guitar-electric-guitar.jpg?cs=srgb&dl=artist-guitar-guitarist-33597.jpg&fm=jpg/"); */
+  background-image: url("../../assets/images/chloe-guitar_Fotor.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -30,12 +28,14 @@
   padding: 5px 10px;
   border-radius: 5px;
   min-width: 120px;
+
   /* height: 30px; */
   cursor: pointer;
 }
 
 .info__register:hover {
-  color: rgb(170, 170, 170);
+  background-color: rgb(6, 75, 92);
+  color: white;
 }
 
 .about {

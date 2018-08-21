@@ -29,8 +29,18 @@ body {
 
   background-color: white;
   /* background-image: url("https://www.transparenttextures.com/patterns/dark-stripes-light.png"); */
-
+  /* background-image: url("./assets/images/entry-background.png"); */
   /* color: white; */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* height: 100vh; */
+}
+
+main {
+  padding-top: 60px;
+  height: 100vh;
 }
 
 button {

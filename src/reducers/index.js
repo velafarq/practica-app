@@ -1,4 +1,10 @@
-import { ADD_TASK, COMPLETE_TASK, REMOVE_TASK } from "../actions/index";
+import {
+  ADD_TASK,
+  COMPLETE_TASK,
+  REMOVE_TASK,
+  ADD_NOTE,
+  PRACTICE_STATUS
+} from "../actions/index";
 
 const initialState = {
   taskIndex: 0,
@@ -34,9 +40,19 @@ const taskReducer = (state = initialState, action) => {
       });
 
     case REMOVE_TASK:
-      // const updatedState = taskList.filter(todo => todo.taskId !== action.id);
       return Object.assign({}, state, {
         taskList: taskList.filter(todo => todo.taskId !== action.id)
+      });
+
+    case ADD_NOTE:
+      console.log(state.notes);
+      return Object.assign({}, state, {
+        notes: [action.note, ...state.notes]
+      });
+
+    case PRACTICE_STATUS:
+      return Object.assign({}, state, {
+        practiceStatus: action.status
       });
 
     default:

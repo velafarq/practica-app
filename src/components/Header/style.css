@@ -1,6 +1,8 @@
 .banner {
   width: 100vw;
   height: 60px;
+  position: fixed;
+  z-index: 2;
   background-color: rgb(8, 95, 117);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }

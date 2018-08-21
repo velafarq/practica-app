@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Fragment } from "react";
 
 import { connect } from "react-redux";
 import "./style.css";
@@ -23,6 +23,7 @@ export class RegisterForm extends React.Component {
     const lastName = this.lastName.current.value;
     const email = this.email.current.value;
     const password = this.password.current.value;
+    e.target.reset();
     const errors = this.handleValidation(password);
 
     if (errors.length > 0) {
@@ -112,9 +113,7 @@ export class RegisterForm extends React.Component {
           </form>
           <div className="block__entry__alternate">
             <p>
-              or
               <Link to="/login" id="alternate">
-                {" "}
                 Login
               </Link>
             </p>

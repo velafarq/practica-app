@@ -2,4 +2,11 @@ language: node_js
 node_js: node
 cache:
   directories:
-    - node_modules
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: VTamqqxt3m4wnlT7yfnqqg//zso8yUBtU2EdU4cHzt0vcXXeYiTwKZR3TmImjYyQXMnZ+7xofilqzZnHlibAI9MyHcby/8RGyYJPcTDs6M18eStISX4Q+OK+9Dr1Jvf3TeJ6DC2g7eOYT1KCN/QqpkOutMZm/HyFVc7dyQeztg26OIrhwYi9xQir3kmRXYI2vupXFVKAQ9I/hCatXFPSXQQimzw57Dxmz7OedqQpUTs54XIKII5it41pBjzXPS66cBCuHWwvnOQDRSdcEBPbgJ1piTsc9ZpjCSp1D8pTB0z8arj72nQel5lPfNdwIB760b+30P0Olkw42HSRsM2tyUwtj2sZc3g7yyd3Q9WxFur6hMslZgv4Npl2R9g+oDz90Buez4hVbjTbKGDhgmq/5RK6HOnniF0PSvI94rKIOOB8+EiWfuxqd5QMnx99qsWVEtwzQS9+GP1qDiPOfNhR4UGj3wCBYRBJfo+UW5pLlZCcTg4Xrzlkh+k2jt/GZFJ1InK57IT5liZh1GOVb6qDwTJqUUac425/ETKimFXyIsZtlgQ5Fi01zSh5Z6539Vscfb0yrRjUmeMKYFz7w8grdmskaTxs54phnJ1jbSMeS54/ehlgnMNrYoNEeDOXrDnQil1ln6AVRB60f0ImNSh2NoPXBTs4J8SJqXLwzJI3LKQ=
+  app: gentle-escarpment-38035
+  on:
+    repo: velafarq/practica-app

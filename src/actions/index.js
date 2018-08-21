@@ -18,3 +18,15 @@ export const removeTask = id => ({
   type: REMOVE_TASK,
   id
 });
+
+export const ADD_NOTE = "ADD_NOTE";
+export const addNote = note => ({
+  type: ADD_NOTE,
+  note
+});
+
+export const PRACTICE_STATUS = "PRACTICE_STATUS";
+export const practiceStatus = status => ({
+  type: PRACTICE_STATUS,
+  status
+});

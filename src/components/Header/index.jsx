@@ -6,7 +6,7 @@ import "./style.css";
 
 export default function Header(props) {
   return (
-    <header className="banner">
+    <header className="banner headerDashboard">
       <div className="header">
         <div className="header__logo">
           <i className="far fa-calendar-check header__logo__img" />

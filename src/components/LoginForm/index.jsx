@@ -17,6 +17,7 @@ export class LoginForm extends React.Component {
 
     const email = this.email.current.value;
     const password = this.password.current.value;
+    e.target.reset();
     console.log(email, password);
   }
 
@@ -64,9 +65,7 @@ export class LoginForm extends React.Component {
           </form>
           <div className="block__entry__alternate">
             <p>
-              or
               <Link to="/register" id="alternate">
-                {" "}
                 Register
               </Link>
             </p>

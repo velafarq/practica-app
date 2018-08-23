@@ -6,15 +6,19 @@ import { Link, Redirect } from "react-router-dom";
 export default function Docket(props) {
   return (
     <Fragment>
-      <section className="today">
-        <div className="today__block">
-          <h2 className="today__title">Today's tasks:</h2>
-          <ul>
-            <li>Scales</li>
-            <li>lullaby of birdland</li>
-          </ul>
-          <Link to="/day">View More</Link>
+      <section className="tmr">
+        <div className="tmr__title__box">
+          <h2 className="tmr__title">Tomorrow's tasks</h2>
         </div>
+        <ul className="tmr__title__box__list">
+          <li>Scales</li>
+          <li>lullaby of birdland</li>
+          <li>lullaby of birdland</li>
+          <li>Scales</li>
+        </ul>
+        <Link className="tmr__add" to="/day">
+          Add more
+        </Link>
       </section>
     </Fragment>
   );

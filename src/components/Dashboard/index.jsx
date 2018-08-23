@@ -7,6 +7,7 @@ import { Link, Redirect } from "react-router-dom";
 
 import WeekNav from "../WeekNav/index";
 import Docket from "../Docket/index";
+import TaskSection from "../TaskSection/index";
 
 import Stats from "../Stats/index";
 
@@ -15,9 +16,10 @@ import "./style.css";
 export default function Dashboard(props) {
   return (
     <Fragment>
+      <WeekNav />
       <main className="background">
-        <WeekNav />
         <Stats />
+        <TaskSection />
         <Docket />
       </main>
     </Fragment>

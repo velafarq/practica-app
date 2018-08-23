@@ -1,12 +1,8 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import {
-  completeTask,
-  removeTask,
-  addTask,
-  practiceStatus
-} from "../../actions/index";
+import { completeTask, removeTask, addTask } from "../../actions/index";
 import "./style.css";
+import PracticeStatus from "../PracticeStatus";
 
 class TaskSection extends React.Component {
   constructor(props) {
@@ -24,26 +20,6 @@ class TaskSection extends React.Component {
     e.preventDefault();
 
     this.props.dispatch(completeTask(id));
-  }
-
-  changePracticeStatus(e) {
-    e.preventDefault();
-    if (this.props.practiceStatus === false) {
-      this.props.dispatch(practiceStatus(true));
-    } else {
-      this.props.dispatch(practiceStatus(false));
-    }
-    console.log(this.props.practiceStatus);
-    document
-      .querySelector(".day__practice__smile")
-      .classList.toggle("day__practice__smile--true");
-
-    const practiceToggle = document.getElementById("practice-toggle");
-    if (practiceToggle.innerHTML === "Did you practice today?") {
-      practiceToggle.innerHTML = "I practiced today!";
-    } else {
-      practiceToggle.innerHTML = "Did you practice today?";
-    }
   }
 
   handleRemove(e, id) {
@@ -79,31 +55,31 @@ class TaskSection extends React.Component {
 
     return (
       <Fragment>
-        <form onSubmit={e => this.handleSubmit(e)} className="todo">
-          <input
-            type="text"
-            className="todo__item"
-            name="q"
-            placeholder="Add task"
-            autoComplete="off"
-            ref={this.todo}
-            required
-          />
-          <button type="submit" className="todo__add">
-            <i className="fas fa-plus" />
-          </button>
-        </form>
+        <div className="task-section">
+          <PracticeStatus />
+          <section className="day">
+            <div>
+              <div className="day__title__box">
+                <h2 className="day__title">Today's tasks</h2>
+              </div>
+              <form onSubmit={e => this.handleSubmit(e)} className="todo">
+                <input
+                  type="text"
+                  className="todo__item"
+                  name="q"
+                  placeholder="Add task"
+                  autoComplete="off"
+                  ref={this.todo}
+                  required
+                />
+                <button type="submit" className="todo__add">
+                  <i className="fas fa-plus" />
+                </button>
+              </form>
 
-        <ul className="tasks">{tasks}</ul>
-        <div className="day__practice">
-          <button
-            id="practice-toggle"
-            title="click to change practice status"
-            className="day__practice__smile"
-            onClick={e => this.changePracticeStatus(e)}
-          >
-            Did you practice today?
-          </button>
+              <ul className="tasks">{tasks}</ul>
+            </div>
+          </section>
         </div>
       </Fragment>
     );
@@ -116,5 +92,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(TaskSection);
-
-// "tasks__task__title"

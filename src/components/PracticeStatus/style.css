@@ -1,0 +1,51 @@
+.practice {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 20px;
+  margin-bottom: 0;
+  border: 1px solid #eeeeef;
+  border-radius: 3px;
+  padding: 12px;
+}
+
+.practice__title__box {
+  width: 100%;
+  border-bottom: 1px solid #eeeeef;
+  border-radius: 3px;
+  display: flex;
+  text-transform: uppercase;
+  justify-content: flex-start;
+}
+.practice__title {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.practice__form {
+  margin: 10px;
+}
+
+.practice__box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.practice__time {
+  max-width: 50px;
+}
+
+.practice__submit {
+  width: 500px;
+  border: none;
+  background-color: rgb(8, 95, 117);
+  color: white;
+  font-size: 14px;
+  height: 25px;
+  cursor: pointer;
+  text-align: center;
+  margin: 20px;
+  margin-top: 0;
+}

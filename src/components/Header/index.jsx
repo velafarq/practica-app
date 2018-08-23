@@ -8,10 +8,16 @@ export default function Header(props) {
   return (
     <header className="banner headerDashboard">
       <div className="header">
-        <div className="header__logo">
-          <i className="far fa-calendar-check header__logo__img" />
-        </div>
-        <h1 className="title">practica</h1>
+        <Link to="/">
+          <div className="header__logo">
+            <img
+              className="header__logo__img"
+              src={require("../../assets/images/practica-logo.png")}
+            />
+
+            <h1 className="title">practica</h1>
+          </div>
+        </Link>
         <nav className="header__nav">
           <Link to="/dashboard" className="header__nav__link">
             dashboard

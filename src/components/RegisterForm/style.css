@@ -29,10 +29,10 @@ a {
 
 .block__entry__form__title {
   text-decoration: underline;
-  /* color: rgb(8, 95, 117); */
+  color: rgb(8, 95, 117);
   font-size: 2em;
   letter-spacing: 2px;
-  color: white;
+  /* color: white; */
 
   /* width: 15vh;
     font-size: 2em;

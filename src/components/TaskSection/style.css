@@ -1,3 +1,34 @@
+.tasksection {
+  display: flex;
+  flex-direction: column;
+}
+
+.day {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 500px;
+  margin: 20px;
+  border: 1px solid #eeeeef;
+  border-radius: 3px;
+  padding: 12px;
+}
+
+.day__title__box {
+  width: 100%;
+  border-bottom: 1px solid #eeeeef;
+  border-radius: 3px;
+  display: flex;
+  text-transform: uppercase;
+  justify-content: flex-start;
+}
+.day__title {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
 .todo {
   display: flex;
   justify-content: center;
@@ -69,25 +100,4 @@
 .tasks__task__title--completed {
   text-decoration: line-through;
   color: lightgray;
-}
-
-.day__practice {
-  display: flex;
-  justify-content: center;
-}
-
-.day__practice__smile {
-  border-radius: 5px;
-  opacity: 0.6;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.day__practice__smile--true {
-  background-color: orange;
-  opacity: 1;
-}
-
-.day__practice__msg {
-  font-size: 30px;
 }

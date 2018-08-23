@@ -25,14 +25,14 @@ class Notepad extends React.Component {
     const { message } = this.state;
     return (
       <Fragment>
-        <section>
-          <p>{message}</p>
+        <section className="notepad__container">
           <form onSubmit={e => this.handleSubmit(e)} class="notepad">
             <textarea placeholder="Your Notepad" ref={this.note} />
             <button class="notepad__submit" type="submit">
-              Submit notes for the day
+              SUBMIT
             </button>
           </form>
+          <p>{message}</p>
         </section>
       </Fragment>
     );

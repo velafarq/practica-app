@@ -1,23 +1,35 @@
-.day {
+.stats {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-align: center;
-  width: 410px;
+  height: 230px;
+
+  margin: 20px;
+  border: 1px solid #eeeeef;
+  border-radius: 3px;
+  padding: 12px;
+}
+.stats__title__box {
+  width: 100%;
+  border-bottom: 1px solid #eeeeef;
+  border-radius: 3px;
+  display: flex;
+  text-transform: uppercase;
+  justify-content: flex-start;
 }
 
-.day__title {
-  font-family: "Pontano Sans", sans-serif;
-  /* font-family: "Handlee", cursive; */
-  font-size: 40px;
+.stats__title {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
 }
 
 .day__stat {
-  font-size: 30px;
+  font-size: 18px;
   text-align: left;
-  padding-left: 25px;
 }
 
 .day__stat__num {
-  color: rgb(221, 89, 36);
+  color: rgb(255, 165, 0);
 }

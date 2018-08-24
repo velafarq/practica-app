@@ -28,13 +28,30 @@
   margin: 10px;
 }
 
+.practice__status__btn {
+  width: 50px;
+  border: 2px solid rgb(8, 95, 117);
+
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 2px;
+}
+.practice__status--true {
+  background-color: orange;
+  color: white;
+}
 .practice__box {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
 .practice__time {
+  box-sizing: border-box;
   max-width: 50px;
+  border: 2px solid rgb(8, 95, 117);
+  padding: 2px;
 }
 
 .practice__submit {
@@ -48,4 +65,8 @@
   text-align: center;
   margin: 20px;
   margin-top: 0;
+}
+
+.message {
+  text-align: center;
 }

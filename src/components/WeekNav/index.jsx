@@ -13,25 +13,25 @@ export default function WeekNav(props) {
               <Link to="/dashboard">Overview</Link>
             </li>
             <li>
-              <a>Monday</a>
+              <Link to="/day">Monday</Link>
             </li>
             <li>
-              <a>Tuesday</a>
+              <Link to="/day">Tuesday</Link>
             </li>
             <li>
-              <a>Wednesday</a>
+              <Link to="/day">Wednesday</Link>
             </li>
             <li>
-              <a>Thursday</a>
+              <Link to="/day">Thursday</Link>
             </li>
             <li>
-              <a>Friday</a>
+              <Link to="/day">Friday</Link>
             </li>
             <li>
-              <a>Saturday</a>
+              <Link to="/day">Saturday</Link>
             </li>
             <li>
-              <a>Sunday</a>
+              <Link to="/day">Sunday</Link>
             </li>
             <li>
               <a>Notes</a>

@@ -3,15 +3,16 @@ import {
   COMPLETE_TASK,
   REMOVE_TASK,
   ADD_NOTE,
-  PRACTICE_STATUS
+  PRACTICE_STATUS,
+  PRACTICE_DURATION
 } from "../actions/index";
 
 const initialState = {
   taskIndex: 0,
   taskList: [],
   notes: [],
-  practiceStatus: false,
-  practiceHours: 0,
+  practiceStatus: 0,
+  practiceDuration: 0,
   goals: []
 };
 
@@ -51,8 +52,18 @@ const taskReducer = (state = initialState, action) => {
       });
 
     case PRACTICE_STATUS:
+      const newPracticeCount = parseInt(state.practiceStatus) + 1;
       return Object.assign({}, state, {
-        practiceStatus: action.status
+        practiceStatus: newPracticeCount
+      });
+
+    case PRACTICE_DURATION:
+      const previous = parseFloat(state.practiceDuration);
+      const current = parseFloat(action.input);
+      const newPracticeStatus = previous + current;
+
+      return Object.assign({}, state, {
+        practiceDuration: newPracticeStatus
       });
 
     default:

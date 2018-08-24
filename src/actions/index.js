@@ -26,7 +26,12 @@ export const addNote = note => ({
 });
 
 export const PRACTICE_STATUS = "PRACTICE_STATUS";
-export const practiceStatus = status => ({
-  type: PRACTICE_STATUS,
-  status
+export const practiceStatus = () => ({
+  type: PRACTICE_STATUS
+});
+
+export const PRACTICE_DURATION = "PRACTICE_DURATION";
+export const practiceDuration = input => ({
+  type: PRACTICE_DURATION,
+  input
 });

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { completeTask, removeTask, addTask } from "../../actions/index";
 import "./style.css";
-import PracticeStatus from "../PracticeStatus";
+import PracticeSection from "../PracticeSection";
 
 class TaskSection extends React.Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class TaskSection extends React.Component {
     return (
       <Fragment>
         <div className="task-section">
-          <PracticeStatus />
+          <PracticeSection />
           <section className="day">
             <div>
               <div className="day__title__box">

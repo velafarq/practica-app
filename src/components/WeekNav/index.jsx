@@ -34,7 +34,7 @@ export default function WeekNav(props) {
               <Link to="/day">Sunday</Link>
             </li>
             <li>
-              <a>Notes</a>
+              <Link to="/notes">Notes</Link>
             </li>
           </ul>
         </section>

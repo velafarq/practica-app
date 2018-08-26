@@ -10,7 +10,7 @@ import {
 const initialState = {
   taskIndex: 0,
   taskList: [],
-  notes: [],
+  notes: [{ content: "test note" }],
   practiceStatus: 0,
   practiceDuration: 0,
   goals: []
@@ -48,7 +48,7 @@ const taskReducer = (state = initialState, action) => {
     case ADD_NOTE:
       console.log(state.notes);
       return Object.assign({}, state, {
-        notes: [action.note, ...state.notes]
+        notes: [{ content: action.note }, ...state.notes]
       });
 
     case PRACTICE_STATUS:

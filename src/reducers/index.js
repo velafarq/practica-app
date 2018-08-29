@@ -1,8 +1,10 @@
 import {
   ADD_TASK,
+  GET_TASKS,
   COMPLETE_TASK,
   REMOVE_TASK,
   ADD_NOTE,
+  GET_NOTES,
   PRACTICE_STATUS,
   PRACTICE_DURATION
 } from "../actions/index";
@@ -40,6 +42,11 @@ const taskReducer = (state = initialState, action) => {
         })
       });
 
+    case GET_TASKS:
+      return Object.assign({}, state, {
+        taskList: [action.tasks]
+      });
+
     case REMOVE_TASK:
       return Object.assign({}, state, {
         taskList: taskList.filter(todo => todo.taskId !== action.id)
@@ -49,6 +56,11 @@ const taskReducer = (state = initialState, action) => {
       console.log(state.notes);
       return Object.assign({}, state, {
         notes: [{ content: action.note }, ...state.notes]
+      });
+
+    case GET_NOTES:
+      return Object.assign({}, state, {
+        notes: [action.notes]
       });
 
     case PRACTICE_STATUS:

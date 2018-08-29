@@ -3,6 +3,7 @@ import React, { Fragment, Component } from "react";
 import { connect } from "react-redux";
 
 import { Link } from "react-router-dom";
+import * as actionRequest from "../../actions/users";
 import "../RegisterForm/style.css";
 
 export class LoginForm extends React.Component {
@@ -18,7 +19,7 @@ export class LoginForm extends React.Component {
     const email = this.email.current.value;
     const password = this.password.current.value;
     e.target.reset();
-    console.log(email, password);
+    this.props.dispatch(actionRequest.login(email, password));
   }
 
   render() {

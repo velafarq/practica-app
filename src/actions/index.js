@@ -7,6 +7,12 @@ export const addTask = task => ({
   payload: task
 });
 
+export const GET_TASKS = "GET_TASKS";
+export const getTasks = tasks => ({
+  type: GET_TASKS,
+  tasks
+});
+
 export const COMPLETE_TASK = "COMPLETE_TASK";
 export const completeTask = id => ({
   type: COMPLETE_TASK,
@@ -23,6 +29,12 @@ export const ADD_NOTE = "ADD_NOTE";
 export const addNote = note => ({
   type: ADD_NOTE,
   note
+});
+
+export const GET_NOTES = "GET_NOTES";
+export const getNotes = notes => ({
+  type: GET_NOTES,
+  notes
 });
 
 export const PRACTICE_STATUS = "PRACTICE_STATUS";

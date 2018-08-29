@@ -1,9 +1,48 @@
-export const REGISTER_USER = "REGISTER_USER";
+import { API_BASE_URL } from "../config";
 
-export const registerUser = (firstName, lastName, email, password) => ({
-  type: REGISTER_USER,
-  firstName,
-  lastName,
-  email,
-  password
-});
+export const register = (email, password) => dispatch => {
+  const data = JSON.stringify({ email, password });
+  return fetch(`${API_BASE_URL}/auth/register`, {
+    method: "POST",
+    body: data,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+        return;
+      }
+      return res.json();
+    })
+    .then(data => {
+      localStorage.setItem("token", data.token);
+    })
+    .catch(error => console.log(error));
+};
+
+export const login = (email, password) => dispatch => {
+  const data = JSON.stringify({
+    email,
+    password
+  });
+  return fetch(`${API_BASE_URL}/auth/login`, {
+    method: "POST",
+    body: data,
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(res => {
+      if (!res.ok) {
+        throw res;
+        return;
+      }
+      return res.json();
+    })
+    .then(data => {
+      localStorage.setItem("token", data.token);
+    })
+    .catch(error => console.log(error));
+};

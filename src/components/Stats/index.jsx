@@ -8,8 +8,8 @@ class Stats extends React.Component {
     const completedTasks = this.props.taskList.filter(todo => {
       todo.completed === true;
     });
+    const length = completedTasks.length;
 
-    console.log(completedTasks.length);
     return (
       <section className="stats">
         <div className="stats__title__box">
@@ -34,7 +34,7 @@ class Stats extends React.Component {
           </div>
           <div>
             <p className="day__stat">
-              <span className="day__stat__num">{this.props.taskIndex} </span>
+              <span className="day__stat__num">{length} </span>
               tasks completed
             </p>
           </div>

@@ -2,8 +2,6 @@ import { REGUSTER_USER } from "../actions/users";
 
 const initialState = {
     users = [{
-        firstName: "",
-        lastName: "",
         email: "",
         password: "",
 

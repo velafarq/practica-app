@@ -33,3 +33,22 @@ export const createTask = ({ task }) => dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+export const addNote = note => dispatch => {
+  const note = note;
+  const data = JSON.stringify({ note });
+  return fetch(`${API_BASE_URL}/notes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `bearer ${localStorage.getItem("token")}`
+    },
+    body: data
+  })
+    .then(res => res.json())
+    .then(note => {
+      console.log(note);
+      dispatch(action.addNote(note));
+    })
+    .catch(err => console.log(err));
+};

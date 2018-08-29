@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { addNote } from "../../actions/index";
+import * as actionRequest from "../../actions/requests";
 import "./style.css";
 
 class Notepad extends React.Component {
@@ -19,7 +20,7 @@ class Notepad extends React.Component {
     this.setState({ message });
 
     e.target.reset();
-    this.props.dispatch(addNote(note));
+    this.props.dispatch(actionRequest.addNote(note));
   }
   render() {
     const { message } = this.state;

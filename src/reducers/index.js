@@ -26,7 +26,7 @@ const taskReducer = (state = initialState, action) => {
       const taskIndex = action.id;
       task.taskId = taskIndex;
       task.completed = false;
-      task.todo = task;
+      task.task = task;
       return Object.assign({}, state, {
         taskList: [...state.taskList, task],
         taskIndex: taskIndex

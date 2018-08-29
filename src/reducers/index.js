@@ -22,10 +22,11 @@ const taskReducer = (state = initialState, action) => {
   const taskList = state.taskList;
   switch (action.type) {
     case ADD_TASK:
-      const task = action.payload;
+      const task = action.task;
       const taskIndex = action.id;
       task.taskId = taskIndex;
       task.completed = false;
+      task.todo = task;
       return Object.assign({}, state, {
         taskList: [...state.taskList, task],
         taskIndex: taskIndex

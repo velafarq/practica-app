@@ -3,18 +3,20 @@ import { connect } from "react-redux";
 import { completeTask, removeTask, addTask } from "../../actions/index";
 import "./style.css";
 import PracticeSection from "../PracticeSection";
+import * as actionRequest from "../../actions/requests";
 
 class TaskSection extends React.Component {
   constructor(props) {
     super(props);
-    this.todo = React.createRef();
+    this.task = React.createRef();
   }
   handleSubmit(event) {
     event.preventDefault();
-    const todo = this.todo.current.value;
+    const task = this.task.current.value;
     event.target.reset();
 
-    this.props.dispatch(addTask({ todo: todo }));
+    this.props.dispatch(actionRequest.createTask({ task }));
+    console.log(this.props.taskList);
   }
   handleCompleteTask(e, id) {
     e.preventDefault();
@@ -41,7 +43,7 @@ class TaskSection extends React.Component {
           id={`label ${task.taskId}`}
           className={task.completed ? "tasks__task__title--completed" : ""}
         >
-          {task.todo}
+          {task.task}
         </label>
         <button
           title="delete"
@@ -69,7 +71,7 @@ class TaskSection extends React.Component {
                   name="q"
                   placeholder="Add task"
                   autoComplete="off"
-                  ref={this.todo}
+                  ref={this.task}
                   required
                 />
                 <button type="submit" className="todo__add">

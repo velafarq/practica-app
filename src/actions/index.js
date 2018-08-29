@@ -4,7 +4,7 @@ export const ADD_TASK = "ADD_TASK";
 export const addTask = task => ({
   type: ADD_TASK,
   id: nextTaskId++,
-  payload: task
+  task
 });
 
 export const GET_TASKS = "GET_TASKS";

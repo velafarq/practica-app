@@ -16,7 +16,7 @@ export const getTasks = () => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const createTask = task => dispatch => {
+export const createTask = ({ task }) => dispatch => {
   const data = JSON.stringify({ task });
 
   return fetch(`${API_BASE_URL}/tasks`, {
@@ -29,7 +29,7 @@ export const createTask = task => dispatch => {
   })
     .then(res => res.json())
     .then(task => {
-      dispatch(action.addTask(task));
+      dispatch(action.addTask({ task: task }));
     })
     .catch(err => console.log(err));
 };

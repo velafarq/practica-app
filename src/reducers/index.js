@@ -4,7 +4,9 @@ import {
   COMPLETE_TASK,
   REMOVE_TASK,
   ADD_NOTE,
-  GET_NOTES,
+  GET_NOTES_ERROR,
+  GET_NOTES_REQUESTED,
+  GET_NOTES_SUCCESS,
   PRACTICE_STATUS,
   PRACTICE_DURATION
 } from "../actions/index";
@@ -12,27 +14,22 @@ import {
 const initialState = {
   taskIndex: 0,
   taskList: [],
-  notes: [{ content: "test note" }],
+  notes: [],
   practiceStatus: 0,
   practiceDuration: 0,
-  goals: []
+  error: false,
+  isFetching: false
 };
 
 const taskReducer = (state = initialState, action) => {
   const taskList = state.taskList;
+  const task = action.task;
   switch (action.type) {
     case ADD_TASK:
-      const task = action.task;
-      const taskIndex = action.id;
-      task.taskId = taskIndex;
-      task.completed = false;
-      task.task = task;
       return Object.assign({}, state, {
-        taskList: [...state.taskList, task],
-        taskIndex: taskIndex
+        taskList: [action.task, ...state.tasks]
       });
 
-      console.log(taskList);
     case COMPLETE_TASK:
       return Object.assign({}, state, {
         ...taskList.filter(todo => {
@@ -45,7 +42,7 @@ const taskReducer = (state = initialState, action) => {
 
     case GET_TASKS:
       return Object.assign({}, state, {
-        taskList: [action.tasks]
+        taskList: [...action.tasks]
       });
 
     case REMOVE_TASK:
@@ -56,12 +53,23 @@ const taskReducer = (state = initialState, action) => {
     case ADD_NOTE:
       console.log(state.notes);
       return Object.assign({}, state, {
-        notes: [{ content: action.note }, ...state.notes]
+        notes: [action.note, ...state.notes]
       });
 
-    case GET_NOTES:
+    case GET_NOTES_REQUESTED:
       return Object.assign({}, state, {
-        notes: [action.notes]
+        isFetching: true
+      });
+
+    case GET_NOTES_SUCCESS:
+      return Object.assign({}, state, {
+        notes: [...action.notes],
+        isFetching: false
+      });
+
+    case GET_NOTES_ERROR:
+      return Object.assign({}, state, {
+        error: true
       });
 
     case PRACTICE_STATUS:

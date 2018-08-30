@@ -17,6 +17,7 @@ export const register = (email, password) => dispatch => {
       return res.json();
     })
     .then(data => {
+      console.log(data);
       localStorage.setItem("token", data.token);
     })
     .catch(error => console.log(error));

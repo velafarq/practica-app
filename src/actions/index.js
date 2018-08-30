@@ -3,7 +3,6 @@ let nextTaskId = 0;
 export const ADD_TASK = "ADD_TASK";
 export const addTask = task => ({
   type: ADD_TASK,
-  id: nextTaskId++,
   task
 });
 
@@ -31,9 +30,18 @@ export const addNote = note => ({
   note
 });
 
-export const GET_NOTES = "GET_NOTES";
-export const getNotes = notes => ({
-  type: GET_NOTES,
+export const GET_NOTES_REQUESTED = "GET_NOTES_REQUESTED";
+export const getNotesRequested = () => ({
+  type: GET_NOTES_REQUESTED
+});
+
+export const GET_NOTES_ERROR = "GET_NOTES_ERROR";
+export const getNotesError = () => ({
+  type: GET_NOTES_ERROR
+});
+export const GET_NOTES_SUCCESS = "GET_NOTES_SUCCESS";
+export const getNotesSuccess = notes => ({
+  type: GET_NOTES_SUCCESS,
   notes
 });
 

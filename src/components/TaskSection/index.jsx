@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { completeTask, removeTask, addTask } from "../../actions/index";
+import { completeTask, removeTask } from "../../actions/index";
 import "./style.css";
 import PracticeSection from "../PracticeSection";
+import { getTasks, addTask } from "../../actions/requests";
 import * as actionRequest from "../../actions/requests";
 
 class TaskSection extends React.Component {
@@ -10,13 +11,20 @@ class TaskSection extends React.Component {
     super(props);
     this.task = React.createRef();
   }
+
+  componentDidMount() {
+    this.props.getTasks();
+  }
+  componentDidUpdate() {
+    this.props.getTasks();
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const task = this.task.current.value;
     event.target.reset();
 
-    this.props.dispatch(actionRequest.createTask({ task }));
-    console.log(this.props.taskList);
+    this.props.addTask(task);
   }
   handleCompleteTask(e, id) {
     e.preventDefault();
@@ -30,17 +38,17 @@ class TaskSection extends React.Component {
   }
   render() {
     const tasks = this.props.taskList.map(task => (
-      <li className="tasks__task" key={task.taskId} value={task.taskId}>
+      <li className="tasks__task" value="hi">
         <button
           title="complete"
           className="tasks__task__check"
-          onClick={e => this.handleCompleteTask(e, task.taskId)}
+          onClick={e => this.handleCompleteTask(e, task._id)}
         >
           <i class="fas fa-check" />
         </button>
 
         <label
-          id={`label ${task.taskId}`}
+          // id={`label ${task.taskId}`}
           className={task.completed ? "tasks__task__title--completed" : ""}
         >
           {task.task}
@@ -48,7 +56,7 @@ class TaskSection extends React.Component {
         <button
           title="delete"
           className="tasks__task__del"
-          onClick={e => this.handleRemove(e, task.taskId)}
+          onClick={e => this.handleRemove(e, task._id)}
         >
           <i className="fas fa-times" />
         </button>
@@ -93,4 +101,12 @@ const mapStateToProps = state => ({
   practiceStatus: state.practiceStatus
 });
 
-export default connect(mapStateToProps)(TaskSection);
+const mapDispatchToProps = dispatch => ({
+  getTasks: () => dispatch(getTasks()),
+  addTask: task => dispatch(addTask(task))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TaskSection);

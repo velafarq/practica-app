@@ -16,6 +16,7 @@ class Notepad extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const note = this.note.current.value;
+
     const message = "Your post was successfuly submitted!";
     this.setState({ message });
 

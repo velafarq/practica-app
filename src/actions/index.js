@@ -23,9 +23,10 @@ export const addTask = task => ({
 });
 
 export const COMPLETE_TASK = "COMPLETE_TASK";
-export const completeTask = id => ({
+export const completeTask = (id, status) => ({
   type: COMPLETE_TASK,
-  id
+  id,
+  status
 });
 
 export const REMOVE_TASK = "REMOVE_TASK";

@@ -36,14 +36,14 @@ export const addTask = task => dispatch => {
   })
     .then(res => res.json())
     .then(task => {
-      // dispatch(action.addTask(task));
+      dispatch(action.addTask(task));
     })
 
     .catch(err => console.log(err));
 };
 
 export const removeTask = id => dispatch => {
-  fetch(`${API_BASE_URL}/tasks/${id}`, {
+  return fetch(`${API_BASE_URL}/tasks/${id}`, {
     method: "DELETE",
     headers: new Headers({
       Authorization: `bearer ${localStorage.getItem("token")}`,
@@ -51,28 +51,33 @@ export const removeTask = id => dispatch => {
     })
   })
     .then(res => res.json())
-    .then(task => console.log(task))
+    .then(task => {
+      dispatch(action.removeTask(id));
+    })
     .catch(err => console.log(err));
 };
 
-// export const completeTask = status => dispatch => {
-//   const data = JSON.stringify({
-//     status
-//   });
+export const completeTask = (id, status) => dispatch => {
+  const _id = id;
+  const data = JSON.stringify({
+    status,
+    _id
+  });
 
-//   fetch(`${API_BASE_URL}/tasks/${id}`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `bearer ${localStorage.getItem("token")}`
-//     },
-//     body: data
-//   })
-//     .then(res => res.json())
-//     .catch(error => {
-//       console.log(error);
-//     });
-// };
+  return fetch(`${API_BASE_URL}/tasks/${id}`, {
+    method: "PUT",
+    headers: new Headers({
+      "Content-Type": "application/json",
+      Authorization: `bearer ${localStorage.getItem("token")}`
+    }),
+    body: _id
+  })
+    .then(res => res.json())
+    .then(task => console.log(task))
+    .catch(error => {
+      console.log(error);
+    });
+};
 
 export const getNotes = () => dispatch => {
   dispatch(action.getNotesRequested());

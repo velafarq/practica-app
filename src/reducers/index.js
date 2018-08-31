@@ -61,7 +61,7 @@ const taskReducer = (state = initialState, action) => {
 
     case REMOVE_TASK:
       return Object.assign({}, state, {
-        taskList: taskList.filter(todo => todo.taskId !== action.id)
+        taskList: taskList.filter(todo => todo._id !== action.id)
       });
 
     case ADD_NOTE:

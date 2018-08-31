@@ -1,22 +1,30 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { completeTask, removeTask } from "../../actions/index";
+import { completeTask } from "../../actions/index";
 import "./style.css";
 import PracticeSection from "../PracticeSection";
-import { getTasks, addTask } from "../../actions/requests";
+import { getTasks, addTask, removeTask } from "../../actions/requests";
 import * as actionRequest from "../../actions/requests";
 
 class TaskSection extends React.Component {
   constructor(props) {
     super(props);
     this.task = React.createRef();
+    this.state = {
+      taskList: this.props.taskList
+    };
   }
 
   componentDidMount() {
     this.props.getTasks();
   }
-  componentDidUpdate() {
-    this.props.getTasks();
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("preProps", prevProps.taskList.length);
+    console.log("this props", this.props.taskList.length);
+    if (prevProps.taskList === this.props.taskList) {
+      this.props.getTasks();
+    }
   }
 
   handleSubmit(event) {
@@ -34,7 +42,7 @@ class TaskSection extends React.Component {
 
   handleRemove(e, id) {
     e.preventDefault();
-    this.props.dispatch(removeTask(id));
+    this.props.removeTask(id);
   }
   render() {
     const tasks = this.props.taskList.map(task => (
@@ -87,8 +95,14 @@ class TaskSection extends React.Component {
                   <i className="fas fa-plus" />
                 </button>
               </form>
-
-              <ul className="tasks">{tasks}</ul>
+              {this.props.isFetching ? (
+                <div className="loading-message">
+                  <i class="fas fa-spinner" />
+                  <p>Loading...</p>
+                </div>
+              ) : (
+                <ul className="tasks">{tasks}</ul>
+              )}
             </div>
           </section>
         </div>
@@ -104,7 +118,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getTasks: () => dispatch(getTasks()),
-  addTask: task => dispatch(addTask(task))
+  addTask: task => dispatch(addTask(task)),
+  removeTask: id => dispatch(removeTask(id))
 });
 
 export default connect(

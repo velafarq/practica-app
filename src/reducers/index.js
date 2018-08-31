@@ -8,7 +8,10 @@ import {
   GET_NOTES_REQUESTED,
   GET_NOTES_SUCCESS,
   PRACTICE_STATUS,
-  PRACTICE_DURATION
+  PRACTICE_DURATION,
+  GET_TASKS_SUCCESS,
+  GET_TASKS_ERROR,
+  GET_TASKS_REQUESTED
 } from "../actions/index";
 
 const initialState = {
@@ -40,9 +43,20 @@ const taskReducer = (state = initialState, action) => {
         })
       });
 
-    case GET_TASKS:
+    case GET_TASKS_REQUESTED:
       return Object.assign({}, state, {
-        taskList: [...action.tasks]
+        isFetching: true
+      });
+
+    case GET_TASKS_SUCCESS:
+      return Object.assign({}, state, {
+        taskList: [...action.tasks],
+        isFetching: false
+      });
+
+    case GET_TASKS_ERROR:
+      return Object.assign({}, state, {
+        error: true
       });
 
     case REMOVE_TASK:

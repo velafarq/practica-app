@@ -2,6 +2,7 @@ import * as action from "./index";
 import { API_BASE_URL } from "../config";
 
 export const getTasks = () => dispatch => {
+  dispatch(action.getTasksRequested());
   return fetch(`${API_BASE_URL}/tasks`, {
     method: "GET",
     headers: new Headers({
@@ -17,9 +18,9 @@ export const getTasks = () => dispatch => {
       return res.json();
     })
     .then(tasks => {
-      dispatch(action.getTasks(tasks));
+      dispatch(action.getTasksSuccess(tasks));
     })
-    .catch(err => console.log(err));
+    .catch(err => dispatch(action.getTasksError()));
 };
 
 export const addTask = task => dispatch => {
@@ -40,6 +41,38 @@ export const addTask = task => dispatch => {
 
     .catch(err => console.log(err));
 };
+
+export const removeTask = id => dispatch => {
+  fetch(`${API_BASE_URL}/tasks/${id}`, {
+    method: "DELETE",
+    headers: new Headers({
+      Authorization: `bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json"
+    })
+  })
+    .then(res => res.json())
+    .then(task => console.log(task))
+    .catch(err => console.log(err));
+};
+
+// export const completeTask = status => dispatch => {
+//   const data = JSON.stringify({
+//     status
+//   });
+
+//   fetch(`${API_BASE_URL}/tasks/${id}`, {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `bearer ${localStorage.getItem("token")}`
+//     },
+//     body: data
+//   })
+//     .then(res => res.json())
+//     .catch(error => {
+//       console.log(error);
+//     });
+// };
 
 export const getNotes = () => dispatch => {
   dispatch(action.getNotesRequested());

@@ -14,7 +14,8 @@ class NotesView extends React.Component {
   render() {
     const notes = this.props.notes.map((note, index) => (
       <li key={index} className="note">
-        {note.content}
+        <div className="note__content">{note.content}</div>
+        <div className="note__date">{note.date}</div>
       </li>
     ));
 

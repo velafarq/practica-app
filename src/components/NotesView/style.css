@@ -7,3 +7,12 @@
   max-height: 300px;
   overflow: auto;
 }
+
+.note__date {
+  color: black;
+  font-size: 12px;
+  margin-top: 10px;
+  text-decoration: underline;
+
+  text-align: right;
+}

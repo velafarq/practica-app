@@ -11,7 +11,7 @@ export default function LandingPage(props) {
       <section className="info">
         <h1 className="info__title">Practica</h1>
         <Link to="/register" className="info__register">
-          Register now!
+          SIGN UP
         </Link>
       </section>
 
@@ -55,6 +55,11 @@ export default function LandingPage(props) {
               musician.
             </p>
           </div>
+        </section>
+        <section>
+          <Link to="/register" className="info__register">
+            SIGN UP
+          </Link>
         </section>
       </section>
     </Fragment>

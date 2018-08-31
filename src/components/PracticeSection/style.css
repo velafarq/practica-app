@@ -30,6 +30,7 @@
 
 .practice__status__btn {
   width: 50px;
+  margin: 4px;
   border: 2px solid rgb(8, 95, 117);
 
   font-size: 12px;
@@ -48,6 +49,7 @@
 }
 
 .practice__time {
+  margin-left: 4px;
   box-sizing: border-box;
   max-width: 50px;
   border: 2px solid rgb(8, 95, 117);
@@ -55,7 +57,6 @@
 }
 
 .practice__submit {
-  width: 500px;
   border: none;
   background-color: rgb(8, 95, 117);
   color: white;

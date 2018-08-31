@@ -38,17 +38,26 @@ body {
 }
 
 main {
-  padding-top: 140px;
-  max-width: 1000px;
-  height: 100vh;
   margin: auto;
-  border: 1px solid #eeeeef;
-  border-radius: 3px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 160px;
+}
+@media only screen and (min-width: 1000px) {
+  main {
+    padding-top: 140px;
+    max-width: 1000px;
+    height: 100vh;
+    margin: auto;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
-button {
-  font-family: "Pontano Sans", sans-serif;
-}
 a {
   cursor: pointer;
   color: white;

@@ -1,4 +1,9 @@
-.notes {
-  color: black;
-  /* margin-top: 400; */
+.note {
+  margin: 20px;
+  border: 1px solid #eeeeef;
+  border-radius: 3px;
+  padding: 12px;
+  max-width: 500px;
+  max-height: 300px;
+  overflow: auto;
 }

@@ -39,20 +39,22 @@ class TaskSection extends React.Component {
   render() {
     const tasks = this.props.taskList.map(task => (
       <li className="tasks__task" value="hi">
-        <button
-          title="complete"
-          className="tasks__task__check"
-          onClick={e => this.handleCompleteTask(e, task._id)}
-        >
-          <i class="fas fa-check" />
-        </button>
+        <div>
+          <button
+            title="complete"
+            className="tasks__task__check"
+            onClick={e => this.handleCompleteTask(e, task._id)}
+          >
+            <i class="fas fa-check" />
+          </button>
+          <label
+            // id={`label ${task.taskId}`}
+            className={task.completed ? "tasks__task__title--completed" : ""}
+          >
+            {task.task}
+          </label>
+        </div>
 
-        <label
-          // id={`label ${task.taskId}`}
-          className={task.completed ? "tasks__task__title--completed" : ""}
-        >
-          {task.task}
-        </label>
         <button
           title="delete"
           className="tasks__task__del"
@@ -66,7 +68,6 @@ class TaskSection extends React.Component {
     return (
       <Fragment>
         <div className="task-section">
-          <PracticeSection />
           <section className="day">
             <div>
               <div className="day__title__box">

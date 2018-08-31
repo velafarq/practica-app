@@ -50,28 +50,32 @@ a {
   border-style: none;
   color: white;
   font-family: "Raleway", sans-serif;
-  border-bottom: 5px solid rgb(8, 95, 117);
+  border-bottom: 1px solid rgb(8, 95, 117);
 }
-
+::placeholder {
+  color: rgb(13, 57, 94);
+  opacity: 0.5;
+  font-size: 20px;
+}
 .block__entry__form__input input {
   padding: 0;
   margin: 0;
   height: 100%;
   border-style: none;
-  color: black;
+  color: rgb(13, 57, 94);
   font-size: 1em;
   padding-left: 10px;
   background-color: rgb(255, 255, 255);
 }
 
 .block__entry__form__submit {
+  margin-top: 20px;
   border-style: none;
   background-color: rgb(8, 95, 117);
   width: 100%;
   color: white;
   font-size: 1 em;
-  cursor: pointer;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.027), 0 6px 6px rgba(0, 0, 0, 0.23);
+  cursor: pointer; /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.027), 0 6px 6px rgba(0, 0, 0, 0.23); */
   display: flex;
   justify-content: center;
   text-align: center;
@@ -87,13 +91,17 @@ a {
   font-size: 1em;
   text-decoration: none;
   margin-top: 10px;
+  color: orange;
 }
 
+#alternate {
+  color: rgb(8, 95, 117);
+  font-size: 20px;
+}
 .block__entry__alternate #alternate:hover {
   cursor: pointer;
-  /* color: rgb(8, 95, 117); */
+  color: orange;
   text-decoration: none;
-  text-decoration: underline;
 }
 
 @media only screen and (min-width: 570px) {

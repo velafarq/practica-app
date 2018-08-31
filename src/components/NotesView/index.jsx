@@ -12,19 +12,10 @@ class NotesView extends React.Component {
     this.props.getNotes();
   }
   render() {
-    const content = () => {
-      if (this.props.isFetching) {
-        return <p>is fetching!</p>;
-      } else if (this.props.error) {
-        return <p>There was an error loading your notes.</p>;
-      } else {
-        return this.props.notes.map((note, index) => (
-          <li key={index}>{note.content}</li>
-        ));
-      }
-    };
     const notes = this.props.notes.map((note, index) => (
-      <li key={index}>{note.content}</li>
+      <li key={index} className="note">
+        {note.content}
+      </li>
     ));
 
     return (

@@ -1,6 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -27,6 +27,7 @@ export default class LandingPage extends React.Component {
           <Link to="/">
             <div className="header__logo">
               <img
+                alt="practica-logo"
                 className="header__logo__img"
                 src={require("../../assets/images/practica-logo.png")}
               />

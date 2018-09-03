@@ -1,14 +1,13 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import PracticeSection from "../PracticeSection";
 
 import "./style.css";
 
 class Stats extends React.Component {
   render() {
-    const completedTasks = this.props.taskList.filter(todo => {
-      todo.completed === true;
-    });
+    const completedTasks = this.props.taskList.filter(
+      todo => todo.completed === true
+    );
     const length = completedTasks.length;
 
     return (

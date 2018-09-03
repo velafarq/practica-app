@@ -1,6 +1,5 @@
 import {
   ADD_TASK,
-  GET_TASKS,
   COMPLETE_TASK,
   REMOVE_TASK,
   ADD_NOTE,
@@ -21,25 +20,26 @@ const initialState = {
   practiceStatus: 0,
   practiceDuration: 0,
   error: false,
-  isFetching: false
+  isFetching: false,
+  isAuthenticated: false
 };
 
 const taskReducer = (state = initialState, action) => {
   const taskList = state.taskList;
-  const task = action.task;
+
   switch (action.type) {
     case ADD_TASK:
       return Object.assign({}, state, {
-        taskList: [action.task, ...state.tasks]
+        taskList: [action.task, ...state.taskList]
       });
 
     case COMPLETE_TASK:
       return Object.assign({}, state, {
-        ...taskList.filter(todo => {
-          if (todo.taskId === action.id) {
-            todo.completed = !todo.completed;
-            console.log(todo);
+        taskList: state.taskList.map(task => {
+          if (task._id === action.id) {
+            task.completed = action.completed;
           }
+          return task;
         })
       });
 
@@ -87,7 +87,7 @@ const taskReducer = (state = initialState, action) => {
       });
 
     case PRACTICE_STATUS:
-      const newPracticeCount = parseInt(state.practiceStatus) + 1;
+      const newPracticeCount = parseInt(state.practiceStatus, 10) + 1;
       return Object.assign({}, state, {
         practiceStatus: newPracticeCount
       });

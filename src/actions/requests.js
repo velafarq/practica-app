@@ -11,10 +11,6 @@ export const getTasks = () => dispatch => {
     })
   })
     .then(res => {
-      if (!res.ok) {
-        throw res;
-        return;
-      }
       return res.json();
     })
     .then(tasks => {
@@ -24,11 +20,9 @@ export const getTasks = () => dispatch => {
 };
 
 export const addTask = task => dispatch => {
-  const data = JSON.stringify({ task });
-
   return fetch(`${API_BASE_URL}/tasks`, {
     method: "POST",
-    body: data,
+    body: task,
     headers: {
       "Content-Type": "application/json",
       Authorization: `bearer ${localStorage.getItem("token")}`
@@ -57,11 +51,10 @@ export const removeTask = id => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const completeTask = (id, status) => dispatch => {
-  const _id = id;
+export const completeTask = (id, completed) => dispatch => {
   const data = JSON.stringify({
-    status,
-    _id
+    completed,
+    _id: id
   });
 
   return fetch(`${API_BASE_URL}/tasks/${id}`, {
@@ -70,10 +63,9 @@ export const completeTask = (id, status) => dispatch => {
       "Content-Type": "application/json",
       Authorization: `bearer ${localStorage.getItem("token")}`
     }),
-    body: _id
+    body: data
   })
-    .then(res => res.json())
-    .then(task => console.log(task))
+    .then(() => dispatch(action.completeTask(id, completed)))
     .catch(error => {
       console.log(error);
     });
@@ -89,14 +81,9 @@ export const getNotes = () => dispatch => {
     })
   })
     .then(res => {
-      if (!res.ok) {
-        throw res;
-        return;
-      }
       return res.json();
     })
     .then(notes => {
-      console.log("these", notes);
       dispatch(action.getNotesSuccess(notes));
     })
     .catch(err => dispatch(action.getNotesError()));
@@ -114,7 +101,6 @@ export const addNote = content => dispatch => {
   })
     .then(res => res.json())
     .then(note => {
-      console.log(data);
       dispatch(action.addNote(note));
     })
     .catch(err => console.log(err));

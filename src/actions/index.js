@@ -1,5 +1,3 @@
-let nextTaskId = 0;
-
 export const GET_TASKS_REQUESTED = "GET_TASKS_REQUESTED";
 export const getTasksRequested = () => ({
   type: GET_TASKS_REQUESTED
@@ -23,10 +21,10 @@ export const addTask = task => ({
 });
 
 export const COMPLETE_TASK = "COMPLETE_TASK";
-export const completeTask = (id, status) => ({
+export const completeTask = (id, completed) => ({
   type: COMPLETE_TASK,
   id,
-  status
+  completed
 });
 
 export const REMOVE_TASK = "REMOVE_TASK";

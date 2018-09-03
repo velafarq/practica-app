@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Fragment } from "react";
 
 import { connect } from "react-redux";
 
@@ -26,17 +26,15 @@ export class LoginForm extends React.Component {
     return (
       <Fragment>
         <div className="block__entry">
-          <h2 class="block__entry__form__title">LOGIN</h2>
+          <h2 className="block__entry__form__title">LOGIN</h2>
           <form
             onSubmit={e => this.handleSubmit(e)}
             className="block__entry__form"
             id="register-new-user"
-            role="form"
             method="post"
-            role="form"
             aria-live="assertive"
           >
-            <div class="block__entry__form__input">
+            <div className="block__entry__form__input">
               <input
                 title="email"
                 type="email"
@@ -48,7 +46,7 @@ export class LoginForm extends React.Component {
                 ref={this.email}
               />
             </div>
-            <div class="block__entry__form__input">
+            <div className="block__entry__form__input">
               <input
                 title="Password"
                 type="password"
@@ -60,7 +58,7 @@ export class LoginForm extends React.Component {
                 ref={this.password}
               />
             </div>
-            <button type="submit" class="block__entry__form__submit">
+            <button type="submit" className="block__entry__form__submit">
               Submit
             </button>
           </form>

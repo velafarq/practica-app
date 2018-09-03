@@ -47,21 +47,19 @@ export class RegisterForm extends React.Component {
     return (
       <Fragment>
         <div className="block__entry">
-          <h2 class="block__entry__form__title">REGISTER</h2>
+          <h2 className="block__entry__form__title">REGISTER</h2>
           <form
             onSubmit={e => this.handleSubmit(e)}
             className="block__entry__form"
             id="register-new-user"
-            role="form"
             method="post"
-            role="form"
             aria-live="assertive"
           >
             {errors.map(error => (
               <p key={error}>{error} </p>
             ))}
 
-            <div class="block__entry__form__input">
+            <div className="block__entry__form__input">
               <input
                 title="email"
                 type="email"
@@ -73,7 +71,7 @@ export class RegisterForm extends React.Component {
                 ref={this.email}
               />
             </div>
-            <div class="block__entry__form__input">
+            <div className="block__entry__form__input">
               <input
                 title="Password"
                 type="password"
@@ -85,7 +83,7 @@ export class RegisterForm extends React.Component {
                 ref={this.password}
               />
             </div>
-            <button type="submit" class="block__entry__form__submit">
+            <button type="submit" className="block__entry__form__submit">
               Submit
             </button>
           </form>

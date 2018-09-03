@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
+
 import "./style.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Docket(props) {
   return (

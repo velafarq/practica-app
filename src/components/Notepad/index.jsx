@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { addNote } from "../../actions/index";
+
 import * as actionRequest from "../../actions/requests";
 import "./style.css";
 
@@ -28,9 +28,9 @@ class Notepad extends React.Component {
     return (
       <Fragment>
         <section className="notepad__container">
-          <form onSubmit={e => this.handleSubmit(e)} class="notepad">
+          <form onSubmit={e => this.handleSubmit(e)} className="notepad">
             <textarea placeholder="Your Notepad" ref={this.note} />
-            <button class="notepad__submit" type="submit">
+            <button className="notepad__submit" type="submit">
               SUBMIT
             </button>
           </form>

@@ -2,33 +2,21 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 
 import "./style.css";
-import PracticeSection from "../PracticeSection";
 import {
   getTasks,
   addTask,
   removeTask,
   completeTask
 } from "../../actions/requests";
-import * as actionRequest from "../../actions/requests";
 
 class TaskSection extends React.Component {
   constructor(props) {
     super(props);
     this.task = React.createRef();
-    this.state = {
-      taskList: this.props.taskList
-    };
   }
 
   componentDidMount() {
     this.props.getTasks();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    // console.log("preProps", prevProps.taskList.length);
-    // console.log("this props", this.props.taskList.length);
-    // if (prevProps.taskList === this.props.taskList) {}
-    // this.props.getTasks();
   }
 
   handleSubmit(event) {
@@ -36,13 +24,12 @@ class TaskSection extends React.Component {
     const task = this.task.current.value;
     event.target.reset();
 
-    this.props.addTask(task);
+    this.props.addTask(JSON.stringify({ task }));
   }
   handleCompleteTask(e, id, status) {
     e.preventDefault();
-    let newStatus = !status;
 
-    this.props.completeTask(id, newStatus);
+    this.props.completeTask(id, !status);
   }
 
   handleRemove(e, id) {
@@ -51,14 +38,14 @@ class TaskSection extends React.Component {
   }
   render() {
     const tasks = this.props.taskList.map(task => (
-      <li className="tasks__task" value="hi">
+      <li className="tasks__task" key={task._id}>
         <div>
           <button
             title="complete"
             className="tasks__task__check"
             onClick={e => this.handleCompleteTask(e, task._id, task.completed)}
           >
-            <i class="fas fa-check" />
+            <i className="fas fa-check" />
           </button>
           <label
             className={task.completed ? "tasks__task__title--completed" : ""}
@@ -101,7 +88,7 @@ class TaskSection extends React.Component {
               </form>
               {this.props.isFetching ? (
                 <div className="loading-message">
-                  <i class="fas fa-spinner" />
+                  <i className="fas fa-spinner" />
                   <p>Loading...</p>
                 </div>
               ) : (
@@ -124,7 +111,7 @@ const mapDispatchToProps = dispatch => ({
   getTasks: () => dispatch(getTasks()),
   addTask: task => dispatch(addTask(task)),
   removeTask: id => dispatch(removeTask(id)),
-  completeTask: (id, status) => dispatch(completeTask(id, status))
+  completeTask: (id, completed) => dispatch(completeTask(id, completed))
 });
 
 export default connect(

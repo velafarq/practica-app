@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { Route, withRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import "./style.css";
 import Header from "../Header/index";

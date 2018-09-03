@@ -1,9 +1,6 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./style.css";
-import RegisterForm from "../RegisterForm/index";
-import LoginForm from "../LoginForm/index";
 
 export default function LandingPage(props) {
   return (
@@ -35,7 +32,7 @@ export default function LandingPage(props) {
             </p>
           </div>
           <div className="description__box">
-            <i class="fas fa-clipboard-list" />
+            <i className="fas fa-clipboard-list" />
             <p className="description__box__title">View weekly stats</p>
             <p>
               Every week, Practica logs your practice days, hours, tasks
@@ -46,7 +43,7 @@ export default function LandingPage(props) {
           </div>
 
           <div className="description__box">
-            <i class="fas fa-trophy" />
+            <i className="fas fa-trophy" />
             <p className="description__box__title">Keep track of your goals</p>
             <p>
               Add long-term or short-term goals as you work and mark them off

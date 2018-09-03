@@ -25,7 +25,7 @@ class NotesView extends React.Component {
         <main className="background">
           {this.props.isFetching ? (
             <div className="loading-message">
-              <i class="fas fa-spinner" />
+              <i className="fas fa-spinner" />
               <p>Loading...</p>
             </div>
           ) : (

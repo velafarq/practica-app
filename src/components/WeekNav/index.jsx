@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 export default function WeekNav(props) {

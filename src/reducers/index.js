@@ -10,7 +10,12 @@ import {
   PRACTICE_DURATION,
   GET_TASKS_SUCCESS,
   GET_TASKS_ERROR,
-  GET_TASKS_REQUESTED
+  GET_TASKS_REQUESTED,
+  LOGIN_ERROR,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS
 } from "../actions/index";
 
 const initialState = {
@@ -21,13 +26,45 @@ const initialState = {
   practiceDuration: 0,
   error: false,
   isFetching: false,
-  isAuthenticated: false
+  isAuthenticated: localStorage.getItem("token") ? true : false
 };
 
 const taskReducer = (state = initialState, action) => {
   const taskList = state.taskList;
 
   switch (action.type) {
+    case LOGIN_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isAuthenticated: false
+      });
+
+    case LOGIN_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: true,
+        error: false
+      });
+
+    case LOGIN_ERROR:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: false,
+        error: true
+      });
+
+    case LOGOUT_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isAuthenticated: true
+      });
+
+    case LOGOUT_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: false
+      });
+
     case ADD_TASK:
       return Object.assign({}, state, {
         taskList: [action.task, ...state.taskList]

@@ -2,8 +2,8 @@ import React, { Fragment } from "react";
 
 import { connect } from "react-redux";
 import "./style.css";
-import { Link } from "react-router-dom";
-import * as actionRequest from "../../actions/users";
+import { Link, Redirect } from "react-router-dom";
+import { register } from "../../actions/users";
 
 export class RegisterForm extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ export class RegisterForm extends React.Component {
       this.setState({ errors });
       return;
     }
-    this.props.dispatch(actionRequest.register(email, password));
+    this.props.dispatch(register(email, password));
   }
 
   handleValidation(password) {
@@ -43,6 +43,9 @@ export class RegisterForm extends React.Component {
     return errors;
   }
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to="/dashboard" />;
+    }
     const { errors } = this.state;
     return (
       <Fragment>
@@ -100,4 +103,10 @@ export class RegisterForm extends React.Component {
   }
 }
 
-export default connect()(RegisterForm);
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.isAuthenticated
+  };
+};
+
+export default connect(mapStateToProps)(RegisterForm);

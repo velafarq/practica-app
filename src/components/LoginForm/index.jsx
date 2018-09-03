@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 import { connect } from "react-redux";
 
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import * as actionRequest from "../../actions/users";
 import "../RegisterForm/style.css";
 
@@ -15,7 +15,6 @@ export class LoginForm extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-
     const email = this.email.current.value;
     const password = this.password.current.value;
     e.target.reset();
@@ -23,6 +22,9 @@ export class LoginForm extends React.Component {
   }
 
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to="/dashboard" />;
+    }
     return (
       <Fragment>
         <div className="block__entry">
@@ -74,5 +76,9 @@ export class LoginForm extends React.Component {
     );
   }
 }
-
-export default connect()(LoginForm);
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.isAuthenticated
+  };
+};
+export default connect(mapStateToProps)(LoginForm);

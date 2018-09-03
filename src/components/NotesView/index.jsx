@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import "./style.css";
 import { getNotes } from "../../actions/requests";
 
@@ -12,6 +13,9 @@ class NotesView extends React.Component {
     this.props.getNotes();
   }
   render() {
+    if (!this.props.isAuthenticated) {
+      return <Redirect to="/login" />;
+    }
     const notes = this.props.notes.map((note, index) => (
       <li key={index} className="note">
         <div className="note__content">{note.content}</div>
@@ -40,7 +44,8 @@ class NotesView extends React.Component {
 const mapStateToProps = state => ({
   notes: state.notes,
   isFetching: state.isFetching,
-  error: state.error
+  error: state.error,
+  isAuthenticated: state.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({

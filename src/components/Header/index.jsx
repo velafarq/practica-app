@@ -1,25 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { logout } from "../../actions/users";
 
 import "./style.css";
 
-export default class LandingPage extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-      isLoggedIn: false
-    };
+class Header extends React.Component {
+  handleLogout() {
+    this.props.dispatch(logout());
   }
-
-  loggedInStatus = () => {
-    const IS_LOGGED_IN = !!localStorage.getItem("token");
-
-    if (IS_LOGGED_IN) {
-      this.setState({ isLoggedIn: true });
-    }
-  };
-
   render() {
     return (
       <header className="banner headerDashboard">
@@ -36,15 +27,41 @@ export default class LandingPage extends React.Component {
             </div>
           </Link>
           <nav className="header__nav">
-            <Link to="/dashboard" className="header__nav__link">
-              dashboard
-            </Link>
-            <Link to="/" className="header__nav__link">
-              logout
-            </Link>
+            {!this.props.isAuthenticated && (
+              <Fragment>
+                <Link to="/login" className="header__nav__link">
+                  login
+                </Link>
+              </Fragment>
+            )}
+
+            {this.props.isAuthenticated && (
+              <Fragment>
+                {" "}
+                <Link to="/dashboard" className="header__nav__link">
+                  dashboard
+                </Link>
+                <Link
+                  onClick={e => this.handleLogout(e)}
+                  to="/"
+                  className="header__nav__link"
+                >
+                  logout
+                </Link>
+              </Fragment>
+            )}
           </nav>
         </div>
       </header>
     );
   }
 }
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    isAuthenticated: state.isAuthenticated
+  };
+};
+
+export default connect(mapStateToProps)(Header);

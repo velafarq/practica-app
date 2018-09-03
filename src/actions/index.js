@@ -63,3 +63,50 @@ export const practiceDuration = input => ({
   type: PRACTICE_DURATION,
   input
 });
+
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
+export const loginRequest = (email, password) => ({
+  type: LOGIN_REQUEST,
+  isFetching: true,
+  isAuthenticated: false,
+  email,
+  password
+});
+
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const loginSuccess = token => ({
+  type: LOGIN_SUCCESS,
+  isFetching: false,
+  isAuthenticated: true,
+  token: token
+});
+
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const loginError = message => ({
+  type: LOGIN_ERROR,
+  isFetching: false,
+  isAuthenticated: false,
+  message
+});
+
+export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
+export const logoutRequest = () => ({
+  type: LOGOUT_REQUEST,
+  isFetching: true,
+  isAuthenticated: true
+});
+
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const logoutSuccess = () => ({
+  type: LOGOUT_SUCCESS,
+  isFetching: false,
+  isAuthenticated: false
+});
+
+// export const LOGOUT_ERROR = "LOGOUT_ERROR";
+// export const logoutError = message => ({
+//   type: LOGOUT_ERROR,
+//   isFetching: false,
+//   isAuthenticated: true,
+//   message
+// });

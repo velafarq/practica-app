@@ -1,4 +1,11 @@
 import { API_BASE_URL } from "../config";
+import {
+  loginRequest,
+  loginError,
+  loginSuccess,
+  logoutSuccess,
+  logoutRequest
+} from "./index";
 
 export const register = (email, password) => dispatch => {
   const data = JSON.stringify({ email, password });
@@ -14,11 +21,13 @@ export const register = (email, password) => dispatch => {
     })
     .then(data => {
       localStorage.setItem("token", data.token);
+      dispatch(loginSuccess(data.token));
     })
     .catch(error => console.log(error));
 };
 
 export const login = (email, password) => dispatch => {
+  dispatch(loginRequest(email, password));
   const data = JSON.stringify({
     email,
     password
@@ -35,6 +44,13 @@ export const login = (email, password) => dispatch => {
     })
     .then(data => {
       localStorage.setItem("token", data.token);
+      dispatch(loginSuccess(data.token));
     })
-    .catch(error => console.log(error));
+    .catch(error => dispatch(loginError("There was an error")));
+};
+
+export const logout = () => dispatch => {
+  dispatch(logoutRequest());
+  localStorage.removeItem("token");
+  dispatch(logoutSuccess());
 };

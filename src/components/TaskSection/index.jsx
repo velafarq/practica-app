@@ -91,8 +91,10 @@ class TaskSection extends React.Component {
                   <i className="fas fa-spinner" />
                   <p>Loading...</p>
                 </div>
-              ) : (
+              ) : this.props.taskList.length > 0 ? (
                 <ul className="tasks">{tasks}</ul>
+              ) : (
+                <p>You don't have any tasks scheduled yet.</p>
               )}
             </div>
           </section>
@@ -104,7 +106,9 @@ class TaskSection extends React.Component {
 
 const mapStateToProps = state => ({
   taskList: state.taskList,
-  practiceStatus: state.practiceStatus
+  practiceStatus: state.practiceStatus,
+  isFetching: state.isFetching,
+  error: state.error
 });
 
 const mapDispatchToProps = dispatch => ({

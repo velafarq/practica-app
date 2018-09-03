@@ -71,6 +71,11 @@ export class LoginForm extends React.Component {
               </Link>
             </p>
           </div>
+          <div>
+            <h3>Demo user credentials:</h3>
+            <p>email: demo@user.com</p>
+            <p>password: demouser2018</p>
+          </div>
         </div>
       </Fragment>
     );

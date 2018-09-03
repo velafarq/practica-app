@@ -11,6 +11,7 @@ class DayView extends React.Component {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/login" />;
     }
+
     return (
       <Fragment>
         <WeekNav />

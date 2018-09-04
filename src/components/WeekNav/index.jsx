@@ -6,21 +6,7 @@ export default function WeekNav(props) {
   return (
     <Fragment>
       <section className="dashboard-header">
-        {/* <a
-          href="#main-menu"
-          class="menu-toggle"
-          role="button"
-          id="main-menu-toggle"
-          aria-expanded="false"
-          aria-controls="main-menu"
-          aria-label="Open main menu"
-        >
-          <span class="fas fa-bars" />
-        </a> */}
         <nav className="dashboard-header__navbar" id="main-menu">
-          {/* <a href="#main-menu-toggle" class="menu-close">
-            <span class="fa fa-close" aria-hidden="true" />
-          </a> */}
           <ul className="dashboard-header__navbar__nav">
             <li>
               <Link to="/dashboard">Overview</Link>
@@ -51,13 +37,6 @@ export default function WeekNav(props) {
             </li>
           </ul>
         </nav>
-        {/* <a
-          href="#main-menu-toggle"
-          class="backdrop"
-          tabIndex="-1"
-          aria-hidden="true"
-          hidden
-        /> */}
       </section>
     </Fragment>
   );

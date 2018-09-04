@@ -6,7 +6,8 @@ import {
   GET_NOTES_ERROR,
   GET_NOTES_REQUESTED,
   GET_NOTES_SUCCESS,
-  PRACTICE_STATUS,
+  INCREASE_PRACTICE,
+  DECREASE_PRACTICE,
   PRACTICE_DURATION,
   GET_TASKS_SUCCESS,
   GET_TASKS_ERROR,
@@ -123,8 +124,14 @@ const taskReducer = (state = initialState, action) => {
         error: true
       });
 
-    case PRACTICE_STATUS:
-      const newPracticeCount = parseInt(state.practiceStatus, 10) + 1;
+    case INCREASE_PRACTICE:
+      let newPracticeCount = parseInt(state.practiceStatus, 10) + 1;
+      return Object.assign({}, state, {
+        practiceStatus: newPracticeCount
+      });
+
+    case DECREASE_PRACTICE:
+      newPracticeCount = parseInt(state.practiceStatus, 10) - 1;
       return Object.assign({}, state, {
         practiceStatus: newPracticeCount
       });

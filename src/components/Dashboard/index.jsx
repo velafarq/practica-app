@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import WeekNav from "../WeekNav/index";
 import Docket from "../Docket/index";
 import TaskSection from "../TaskSection/index";
-
 import Stats from "../Stats/index";
 
 import "./style.css";

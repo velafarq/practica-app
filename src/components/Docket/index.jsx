@@ -11,10 +11,7 @@ export default function Docket(props) {
           <h2 className="tmr__title">Tomorrow's tasks</h2>
         </div>
         <ul className="tmr__title__box__list">
-          <li>Scales</li>
-          <li>lullaby of birdland</li>
-          <li>lullaby of birdland</li>
-          <li>Scales</li>
+          <p>no tasks scheduled for tomorrow yet</p>
         </ul>
         <Link className="tmr__add" to="/day">
           Add more

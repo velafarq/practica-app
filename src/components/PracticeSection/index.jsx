@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 
-import { practiceStatus, practiceDuration } from "../../actions/index";
+import { increasePractice, practiceDuration } from "../../actions/index";
 import "./style.css";
 
 class PracticeSection extends React.Component {
@@ -10,8 +10,7 @@ class PracticeSection extends React.Component {
 
     this.practiceTime = React.createRef();
     this.state = {
-      submitMessage: "",
-      practiceMessage: "NO"
+      submitMessage: ""
     };
   }
 
@@ -26,54 +25,53 @@ class PracticeSection extends React.Component {
     e.target.reset();
     this.setState({ submitMessage });
   }
-  handlePracticeToggle(e) {
+  addPracticeDay(e) {
     e.preventDefault();
-    const practiceMessage = "YES";
-    this.setState({ practiceMessage });
-    this.props.dispatch(practiceStatus());
-    console.log(this.props.practiceStatus);
+
+    this.props.dispatch(increasePractice());
   }
 
   render() {
-    const { submitMessage, practiceMessage } = this.state;
+    const { submitMessage } = this.state;
     return (
       <Fragment>
-        <div className="practice__box">
-          <label className="practice__status">Did you practice today?</label>
-          <button
-            className={"practice__status__btn"}
-            onClick={e => this.handlePracticeToggle(e)}
-            title="click to change practice status"
-          >
-            {practiceMessage}
-          </button>
-        </div>
-        <form onSubmit={e => this.handleSubmit(e)} className="practice__form">
-          <div className="practice">
-            <div className="practice__title__box">
-              <h2 className="practice__title">Practice Status</h2>
-            </div>
-
-            <div className="practice__box">
-              <label className="practice__status">
-                How many hours did you practice for?
-              </label>
-
-              <input
-                step=".01"
-                min="0"
-                required
-                type="number"
-                className="practice__time"
-                ref={this.practiceTime}
-              />
-            </div>
+        <section className="practice-section">
+          <div className="practice__box">
+            <label className="practice__status">Add/remove practice day</label>
+            <button
+              className={"practice__status__btn"}
+              onClick={e => this.addPracticeDay(e)}
+              title="click to add practice day"
+            >
+              <i className="fas fa-arrow-up" />
+            </button>
+            <button
+              className="practice__status__btn"
+              title="click to remove practice day"
+            >
+              <i className="fas fa-arrow-down" />
+            </button>
           </div>
-          <button className="practice__submit" type="submt">
-            SUBMIT
-          </button>
-        </form>
-        <p className="message">{submitMessage}</p>
+          <form onSubmit={e => this.handleSubmit(e)} className="practice__form">
+            <label className="practice__status">
+              How many hours did you practice for?
+            </label>
+
+            <input
+              step=".01"
+              min="0"
+              required
+              type="number"
+              className="practice__time"
+              ref={this.practiceTime}
+            />
+
+            <button className="practice__submit" type="submt">
+              ADD
+            </button>
+          </form>
+          <p className="message">{submitMessage}</p>
+        </section>
       </Fragment>
     );
   }

@@ -17,6 +17,7 @@ class DayView extends React.Component {
         <WeekNav />
         <main>
           <TaskSection />
+
           <Notepad />
         </main>
       </Fragment>

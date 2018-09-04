@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 20px;
+
   margin-bottom: 0;
   border: 1px solid #eeeeef;
   border-radius: 3px;
@@ -24,12 +24,7 @@
   padding: 0;
 }
 
-.practice__form {
-  margin: 10px;
-}
-
 .practice__status__btn {
-  width: 50px;
   margin: 4px;
   border: 2px solid rgb(8, 95, 117);
 

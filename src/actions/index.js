@@ -53,9 +53,14 @@ export const addNote = note => ({
   note
 });
 
-export const PRACTICE_STATUS = "PRACTICE_STATUS";
-export const practiceStatus = () => ({
-  type: PRACTICE_STATUS
+export const INCREASE_PRACTICE = "INCREASE_PRACTICE";
+export const increasePractice = () => ({
+  type: INCREASE_PRACTICE
+});
+
+export const DECREASE_PRACTICE = "DECREASE_PRACTICE";
+export const decreasePractice = () => ({
+  type: DECREASE_PRACTICE
 });
 
 export const PRACTICE_DURATION = "PRACTICE_DURATION";
@@ -102,11 +107,3 @@ export const logoutSuccess = () => ({
   isFetching: false,
   isAuthenticated: false
 });
-
-// export const LOGOUT_ERROR = "LOGOUT_ERROR";
-// export const logoutError = message => ({
-//   type: LOGOUT_ERROR,
-//   isFetching: false,
-//   isAuthenticated: true,
-//   message
-// });

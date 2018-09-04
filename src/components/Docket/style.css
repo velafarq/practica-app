@@ -13,7 +13,6 @@
 
 .tmr__title__box {
   width: 100%;
-  /* border-bottom: 1px solid #eeeeef; */
   border-radius: 3px;
   display: flex;
   text-transform: uppercase;
@@ -33,10 +32,20 @@
 }
 
 .tmr__add {
-  font-size: 12px;
-
-  color: #333;
+  border: none;
+  background-color: rgb(8, 95, 117);
   text-transform: uppercase;
+  color: white;
+  font-size: 14px;
+  height: 25px;
+  cursor: pointer;
+  text-align: center;
+  margin: 20px;
+  margin-top: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .tmr__add:hover {
   text-decoration: underline;

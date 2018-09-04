@@ -42,7 +42,7 @@ class Stats extends React.Component {
                 </p>
               </div>
               <div>
-                <button>Reset</button>
+                <button className="stat__reset">Reset</button>
               </div>
             </div>
           </section>

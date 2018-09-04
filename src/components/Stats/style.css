@@ -25,6 +25,19 @@
   padding: 0;
 }
 
+.stat__reset {
+  border: none;
+  background-color: rgb(8, 95, 117);
+  text-transform: uppercase;
+  color: white;
+  font-size: 14px;
+  height: 25px;
+  cursor: pointer;
+  text-align: center;
+  margin: 20px;
+  margin-top: 0;
+}
+
 .day__stat {
   font-size: 18px;
   text-align: left;

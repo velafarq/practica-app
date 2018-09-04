@@ -11,7 +11,7 @@ export default function Docket(props) {
           <h2 className="tmr__title">Tomorrow's tasks</h2>
         </div>
         <ul className="tmr__title__box__list">
-          <p>no tasks scheduled for tomorrow yet</p>
+          <p>No tasks scheduled for tomorrow yet.</p>
         </ul>
         <Link className="tmr__add" to="/day">
           Add more

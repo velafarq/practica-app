@@ -1,6 +1,6 @@
 import {
   ADD_TASK,
-  COMPLETE_TASK,
+  TOGGLE_STATUS,
   REMOVE_TASK,
   ADD_NOTE,
   GET_NOTES_ERROR,
@@ -71,11 +71,11 @@ const taskReducer = (state = initialState, action) => {
         taskList: [action.task, ...state.taskList]
       });
 
-    case COMPLETE_TASK:
+    case TOGGLE_STATUS:
       return Object.assign({}, state, {
         taskList: state.taskList.map(task => {
           if (task._id === action.id) {
-            task.completed = action.completed;
+            task.status = action.status;
           }
           return task;
         })

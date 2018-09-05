@@ -6,7 +6,7 @@ import {
   getTasks,
   addTask,
   removeTask,
-  completeTask
+  toggleStatus
 } from "../../actions/requests";
 
 class TaskSection extends React.Component {
@@ -29,7 +29,7 @@ class TaskSection extends React.Component {
   handleCompleteTask(e, id, status) {
     e.preventDefault();
 
-    this.props.completeTask(id, !status);
+    this.props.toggleStatus(id, !status);
   }
 
   handleRemove(e, id) {
@@ -37,30 +37,62 @@ class TaskSection extends React.Component {
     this.props.removeTask(id);
   }
   render() {
-    const tasks = this.props.taskList.map(task => (
+    const activeTaskFilter = this.props.taskList.filter(
+      task => task.status === false
+    );
+
+    const inactiveTaskFilter = this.props.taskList.filter(
+      task => task.status === true
+    );
+    const inactiveTasks = inactiveTaskFilter.map(task => (
       <li className="tasks__task" key={task._id}>
         <div>
           <button
-            title="complete"
+            title="activate"
             className="tasks__task__check"
-            onClick={e => this.handleCompleteTask(e, task._id, task.completed)}
+            onClick={e => this.handleCompleteTask(e, task._id, task.status)}
           >
-            <i className="fas fa-check" />
+            <i className="far fa-circle" />
           </button>
-          <label
-            className={task.completed ? "tasks__task__title--completed" : ""}
-          >
-            {task.task}
-          </label>
+          <label className="tasks__task__title--completed">{task.task}</label>
         </div>
 
-        <button
-          title="delete"
-          className="tasks__task__del"
-          onClick={e => this.handleRemove(e, task._id)}
-        >
-          <i className="fas fa-times" />
-        </button>
+        <div>
+          <button className="tasks__task__expand">expand</button>
+          <button
+            title="delete"
+            className="tasks__task__del"
+            onClick={e => this.handleRemove(e, task._id)}
+          >
+            <i className="fas fa-times" />
+          </button>
+        </div>
+      </li>
+    ));
+
+    const activeTasks = activeTaskFilter.map(task => (
+      <li className="tasks__task" key={task._id}>
+        <div>
+          <button
+            title="deactivate"
+            className="tasks__task__check"
+            onClick={e => this.handleCompleteTask(e, task._id, task.status)}
+          >
+            <i className="fas fa-circle  active-project" />
+          </button>
+          <label>{task.task}</label>
+        </div>
+
+        <div>
+          <button className="tasks__task__expand">expand</button>
+          <button
+            title="delete"
+            className="tasks__task__del"
+            onClick={e => this.handleRemove(e, task._id)}
+          >
+            <i className="fas fa-times" />
+          </button>
+        </div>
       </li>
     ));
 
@@ -70,14 +102,14 @@ class TaskSection extends React.Component {
           <section className="day">
             <div>
               <div className="day__title__box">
-                <h2 className="day__title">Today's tasks</h2>
+                <h2 className="day__title">Active projects</h2>
               </div>
               <form onSubmit={e => this.handleSubmit(e)} className="todo">
                 <input
                   type="text"
                   className="todo__item"
                   name="q"
-                  placeholder="Add task"
+                  placeholder="Add a new project"
                   autoComplete="off"
                   ref={this.task}
                   required
@@ -91,11 +123,27 @@ class TaskSection extends React.Component {
                   <i className="fas fa-spinner" />
                   <p>Loading...</p>
                 </div>
-              ) : this.props.taskList.length > 0 ? (
-                <ul className="tasks">{tasks}</ul>
+              ) : activeTasks.length > 0 ? (
+                <ul className="tasks">{activeTasks}</ul>
               ) : (
-                <p>You don't have any tasks scheduled yet.</p>
+                <p>You haven't added any projects yet.</p>
               )}
+
+              <div>
+                <div className="day__title__box">
+                  <h2 className="day__title">Inactive projects</h2>
+                </div>
+                {this.props.isFetching ? (
+                  <div className="loading-message">
+                    <i className="fas fa-spinner" />
+                    <p>Loading...</p>
+                  </div>
+                ) : inactiveTasks.length > 0 ? (
+                  <ul className="tasks">{inactiveTasks}</ul>
+                ) : (
+                  <p>You don't have any inactive projects.</p>
+                )}
+              </div>
             </div>
           </section>
         </div>
@@ -115,7 +163,7 @@ const mapDispatchToProps = dispatch => ({
   getTasks: () => dispatch(getTasks()),
   addTask: task => dispatch(addTask(task)),
   removeTask: id => dispatch(removeTask(id)),
-  completeTask: (id, completed) => dispatch(completeTask(id, completed))
+  toggleStatus: (id, status) => dispatch(toggleStatus(id, status))
 });
 
 export default connect(

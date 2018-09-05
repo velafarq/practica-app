@@ -51,9 +51,9 @@ export const removeTask = id => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const completeTask = (id, completed) => dispatch => {
+export const toggleStatus = (id, status) => dispatch => {
   const data = JSON.stringify({
-    completed,
+    status,
     _id: id
   });
 
@@ -65,7 +65,7 @@ export const completeTask = (id, completed) => dispatch => {
     }),
     body: data
   })
-    .then(() => dispatch(action.completeTask(id, completed)))
+    .then(() => dispatch(action.toggleStatus(id, status)))
     .catch(error => {
       console.log(error);
     });

@@ -94,6 +94,24 @@
   background-color: transparent;
 }
 
+.active-project {
+  color: orange;
+}
+
+.tasks__task__expand {
+  border: none;
+  background-color: rgb(8, 95, 117);
+  text-transform: uppercase;
+  color: white;
+  font-size: 8px;
+
+  cursor: pointer;
+  text-align: center;
+  margin: 20px;
+  margin-top: 0;
+  font-weight: lighter;
+}
+
 .tasks__task__check {
   background-color: transparent;
   opacity: 0.3;
@@ -106,6 +124,5 @@
 }
 
 .tasks__task__title--completed {
-  text-decoration: line-through;
   color: lightgray;
 }

@@ -20,11 +20,11 @@ export const addTask = task => ({
   task
 });
 
-export const COMPLETE_TASK = "COMPLETE_TASK";
-export const completeTask = (id, completed) => ({
-  type: COMPLETE_TASK,
+export const TOGGLE_STATUS = "TOGGLE_STATUS";
+export const toggleStatus = (id, status) => ({
+  type: TOGGLE_STATUS,
   id,
-  completed
+  status
 });
 
 export const REMOVE_TASK = "REMOVE_TASK";

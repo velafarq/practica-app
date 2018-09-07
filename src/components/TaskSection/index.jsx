@@ -34,11 +34,6 @@ class TaskSection extends React.Component {
     this.props.toggleStatus(id, !status);
   }
 
-  getTaskById(e, id) {
-    e.preventDefault();
-    this.props.getTask(id);
-  }
-
   handleRemove(e, id) {
     e.preventDefault();
     this.props.removeTask(id);
@@ -65,12 +60,7 @@ class TaskSection extends React.Component {
         </div>
 
         <div>
-          <button
-            className="tasks__task__expand"
-            onClick={e => this.getTaskById(e, task._id)}
-          >
-            expand
-          </button>
+          <button className="tasks__task__expand">expand</button>
           <button
             title="delete"
             className="tasks__task__del"
@@ -96,7 +86,7 @@ class TaskSection extends React.Component {
         </div>
 
         <div>
-          <Link to={`/${task._id}`}>
+          <Link to={`/dashboard/${task._id}`}>
             <button className="tasks__task__expand">expand</button>
           </Link>
           <button

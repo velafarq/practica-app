@@ -22,7 +22,7 @@ class App extends Component {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/notes" component={NotesView} />
-        <Route exact path="/:projectId" component={TaskView} />
+        <Route exact path="/dashboard/:projectId" component={TaskView} />
       </Fragment>
     );
   }

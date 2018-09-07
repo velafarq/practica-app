@@ -14,6 +14,22 @@ export const getTasksError = () => ({
   type: GET_TASKS_ERROR
 });
 
+export const GET_TASK_REQUESTED = "GET_TASK_REQUESTED";
+export const getTaskRequested = () => ({
+  type: GET_TASK_REQUESTED
+});
+
+export const GET_TASK_SUCCESS = "GET_TASK_SUCCESS";
+export const getTaskSuccess = task => ({
+  type: GET_TASK_SUCCESS,
+  task
+});
+
+export const GET_TASK_ERROR = "GET_TASK_ERROR";
+export const getTaskError = () => ({
+  type: GET_TASK_ERROR
+});
+
 export const ADD_TASK = "ADD_TASK";
 export const addTask = task => ({
   type: ADD_TASK,
@@ -25,6 +41,21 @@ export const toggleStatus = (id, status) => ({
   type: TOGGLE_STATUS,
   id,
   status
+});
+
+export const PUSH_TASK_NOTE = "PUSH_TASK_NOTE";
+export const pushTaskNote = (id, title, body) => ({
+  type: PUSH_TASK_NOTE,
+  id,
+  title,
+  body
+});
+
+export const UPDATE_TASK_PRACTICE = "UPDATE_TASK_PRACTICE";
+export const updateTaskPractice = (id, practiceDuration) => ({
+  type: UPDATE_TASK_PRACTICE,
+  id,
+  practiceDuration
 });
 
 export const REMOVE_TASK = "REMOVE_TASK";

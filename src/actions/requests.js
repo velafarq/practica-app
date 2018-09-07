@@ -19,6 +19,25 @@ export const getTasks = () => dispatch => {
     .catch(err => dispatch(action.getTasksError()));
 };
 
+export const getTask = id => dispatch => {
+  dispatch(action.getTaskRequested());
+  return fetch(`${API_BASE_URL}/tasks/${id}`, {
+    method: "GET",
+    headers: new Headers({
+      Authorization: `bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json"
+    })
+  })
+    .then(res => {
+      return res.json();
+    })
+    .then(task => {
+      console.log("hey ho", task);
+      dispatch(action.getTaskSuccess(task));
+    })
+    .catch(err => dispatch(action.getTaskError()));
+};
+
 export const addTask = task => dispatch => {
   return fetch(`${API_BASE_URL}/tasks`, {
     method: "POST",
@@ -66,6 +85,45 @@ export const toggleStatus = (id, status) => dispatch => {
     body: data
   })
     .then(() => dispatch(action.toggleStatus(id, status)))
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const updateTaskPractice = (id, practiceDuration) => dispatch => {
+  const data = JSON.stringify({
+    practiceDuration
+  });
+
+  return fetch(`${API_BASE_URL}/tasks/${id}`, {
+    method: "PUT",
+    headers: new Headers({
+      "Content-Type": "application/json",
+      Authorization: `bearer ${localStorage.getItem("token")}`
+    }),
+    body: data
+  })
+    .then(() => dispatch(action.updateTaskPractice(id, practiceDuration)))
+    .catch(error => {
+      console.log(error);
+    });
+};
+
+export const pushTaskNote = (id, title, body) => dispatch => {
+  const data = JSON.stringify({
+    title,
+    body
+  });
+
+  return fetch(`${API_BASE_URL}/tasks/${id}/notes`, {
+    method: "PUT",
+    headers: new Headers({
+      "Content-Type": "application/json",
+      Authorization: `bearer ${localStorage.getItem("token")}`
+    }),
+    body: data
+  })
+    .then(() => dispatch(action.pushTaskNote(id, title, body)))
     .catch(error => {
       console.log(error);
     });

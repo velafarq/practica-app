@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import WeekNav from "../WeekNav/index";
 import Notepad from "../Notepad/index";
-import TaskSection from "../TaskSection/index";
+import TaskView from "../TaskView/index";
 import "./style.css";
 
 class DayView extends React.Component {
@@ -16,7 +16,7 @@ class DayView extends React.Component {
       <Fragment>
         <WeekNav />
         <main>
-          <TaskSection />
+          <TaskView />
 
           <Notepad />
         </main>

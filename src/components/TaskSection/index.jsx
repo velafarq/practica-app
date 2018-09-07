@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 import {
   getTasks,
+  getTask,
   addTask,
   removeTask,
   toggleStatus
@@ -26,10 +28,15 @@ class TaskSection extends React.Component {
 
     this.props.addTask(JSON.stringify({ task }));
   }
-  handleCompleteTask(e, id, status) {
+  handleStatusChange(e, id, status) {
     e.preventDefault();
 
     this.props.toggleStatus(id, !status);
+  }
+
+  getTaskById(e, id) {
+    e.preventDefault();
+    this.props.getTask(id);
   }
 
   handleRemove(e, id) {
@@ -50,7 +57,7 @@ class TaskSection extends React.Component {
           <button
             title="activate"
             className="tasks__task__check"
-            onClick={e => this.handleCompleteTask(e, task._id, task.status)}
+            onClick={e => this.handleStatusChange(e, task._id, task.status)}
           >
             <i className="far fa-circle" />
           </button>
@@ -58,7 +65,12 @@ class TaskSection extends React.Component {
         </div>
 
         <div>
-          <button className="tasks__task__expand">expand</button>
+          <button
+            className="tasks__task__expand"
+            onClick={e => this.getTaskById(e, task._id)}
+          >
+            expand
+          </button>
           <button
             title="delete"
             className="tasks__task__del"
@@ -76,7 +88,7 @@ class TaskSection extends React.Component {
           <button
             title="deactivate"
             className="tasks__task__check"
-            onClick={e => this.handleCompleteTask(e, task._id, task.status)}
+            onClick={e => this.handleStatusChange(e, task._id, task.status)}
           >
             <i className="fas fa-circle  active-project" />
           </button>
@@ -84,7 +96,9 @@ class TaskSection extends React.Component {
         </div>
 
         <div>
-          <button className="tasks__task__expand">expand</button>
+          <Link to={`/${task._id}`}>
+            <button className="tasks__task__expand">expand</button>
+          </Link>
           <button
             title="delete"
             className="tasks__task__del"
@@ -160,6 +174,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getTask: id => dispatch(getTask(id)),
   getTasks: () => dispatch(getTasks()),
   addTask: task => dispatch(addTask(task)),
   removeTask: id => dispatch(removeTask(id)),

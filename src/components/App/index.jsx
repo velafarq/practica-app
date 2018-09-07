@@ -9,6 +9,7 @@ import DayView from "../DayView/index";
 import LoginForm from "../LoginForm/index";
 import RegisterForm from "../RegisterForm/index";
 import NotesView from "../NotesView";
+import TaskView from "../TaskView";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/notes" component={NotesView} />
+        <Route exact path="/:projectId" component={TaskView} />
       </Fragment>
     );
   }

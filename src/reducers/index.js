@@ -1,6 +1,8 @@
 import {
   ADD_TASK,
   TOGGLE_STATUS,
+  PUSH_TASK_NOTE,
+  UPDATE_TASK_PRACTICE,
   REMOVE_TASK,
   ADD_NOTE,
   GET_NOTES_ERROR,
@@ -9,6 +11,9 @@ import {
   INCREASE_PRACTICE,
   DECREASE_PRACTICE,
   PRACTICE_DURATION,
+  GET_TASK_ERROR,
+  GET_TASK_REQUESTED,
+  GET_TASK_SUCCESS,
   GET_TASKS_SUCCESS,
   GET_TASKS_ERROR,
   GET_TASKS_REQUESTED,
@@ -22,6 +27,7 @@ import {
 const initialState = {
   taskIndex: 0,
   taskList: [],
+  currentTask: {},
   notes: [],
   practiceStatus: 0,
   practiceDuration: 0,
@@ -81,6 +87,33 @@ const taskReducer = (state = initialState, action) => {
         })
       });
 
+    case UPDATE_TASK_PRACTICE:
+      return Object.assign({}, state, {
+        taskList: state.taskList.map(task => {
+          if (task._id === action.id) {
+            let updatedPracticeDuration =
+              parseInt(task.practiceDuration, 10) +
+              parseInt(action.practiceDuration, 10);
+
+            task.practiceDuration = updatedPracticeDuration;
+          }
+          return task;
+        })
+      });
+
+    case PUSH_TASK_NOTE:
+      return Object.assign({}, state, {
+        taskList: state.taskList.map(task => {
+          if (task._id === action.id) {
+            task.notes = [
+              { title: action.title, body: action.body },
+              ...state.notes
+            ];
+          }
+          return task;
+        })
+      });
+
     case GET_TASKS_REQUESTED:
       return Object.assign({}, state, {
         isFetching: true
@@ -102,8 +135,23 @@ const taskReducer = (state = initialState, action) => {
         taskList: taskList.filter(todo => todo._id !== action.id)
       });
 
+    case GET_TASK_REQUESTED:
+      return Object.assign({}, state, {
+        isFetching: true
+      });
+
+    case GET_TASK_SUCCESS:
+      return Object.assign({}, state, {
+        currentTask: action.task,
+        isFetching: false
+      });
+
+    case GET_TASK_ERROR:
+      return Object.assign({}, state, {
+        error: true
+      });
+
     case ADD_NOTE:
-      console.log(state.notes);
       return Object.assign({}, state, {
         notes: [action.note, ...state.notes]
       });

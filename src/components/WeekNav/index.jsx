@@ -13,7 +13,7 @@ export default function WeekNav(props) {
             </li>
 
             <li>
-              <Link to="/day">Project Archive</Link>
+              <Link to="/archive">Project Archive</Link>
             </li>
             <li>
               <Link to="/notes">Notes</Link>

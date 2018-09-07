@@ -1,0 +1,27 @@
+.practice__form {
+  display: flex;
+  flex-direction: row;
+}
+
+.practice__time {
+  margin-left: 4px;
+  box-sizing: border-box;
+  max-width: 50px;
+  border: 2px solid rgb(8, 95, 117);
+  padding: 2px;
+}
+
+.practice__submit {
+  border: none;
+  background-color: rgb(8, 95, 117);
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+
+  cursor: pointer;
+  text-align: center;
+}
+
+.message {
+  text-align: center;
+}

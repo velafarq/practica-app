@@ -107,7 +107,7 @@ const taskReducer = (state = initialState, action) => {
           if (task._id === action.id) {
             task.notes = [
               { title: action.title, body: action.body },
-              ...state.notes
+              ...state.task.notes
             ];
           }
           return task;

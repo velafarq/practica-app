@@ -24,18 +24,21 @@
   margin: 0;
   padding: 0;
 }
-
+.stats__log {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 .stat__reset {
   border: none;
   background-color: rgb(8, 95, 117);
   text-transform: uppercase;
   color: white;
-  font-size: 14px;
-  height: 25px;
+  font-size: 12px;
+  height: 20px;
   cursor: pointer;
   text-align: center;
-  margin: 20px;
-  margin-top: 0;
 }
 
 .day__stat {

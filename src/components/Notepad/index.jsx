@@ -29,7 +29,11 @@ class Notepad extends React.Component {
       <Fragment>
         <section className="notepad__container">
           <form onSubmit={e => this.handleSubmit(e)} className="notepad">
-            <textarea placeholder="Your Notepad" ref={this.note} />
+            <textarea
+              className="notepad__textarea"
+              placeholder="Your Notepad"
+              ref={this.note}
+            />
             <button className="notepad__submit" type="submit">
               SUBMIT
             </button>

@@ -5,7 +5,7 @@ import "./style.css";
 import Header from "../Header/index";
 import LandingPage from "../LandingPage/index";
 import Dashboard from "../Dashboard/index";
-import DayView from "../DayView/index";
+
 import LoginForm from "../LoginForm/index";
 import RegisterForm from "../RegisterForm/index";
 import NotesView from "../NotesView";
@@ -18,7 +18,7 @@ class App extends Component {
         <Header />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/day" component={DayView} />
+        <Route exact path="/archive" />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/notes" component={NotesView} />

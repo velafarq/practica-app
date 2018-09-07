@@ -122,6 +122,7 @@ export const loginError = message => ({
   type: LOGIN_ERROR,
   isFetching: false,
   isAuthenticated: false,
+  error: true,
   message
 });
 

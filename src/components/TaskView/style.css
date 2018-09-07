@@ -1,4 +1,108 @@
-.margin {
-  padding-top: 300px;
+.project_note {
+  /* margin: 20px; */
+  border: 1px solid #eeeeef;
+  border-radius: 3px;
+  margin: 0;
+  padding: 0;
+  max-width: 500px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.project__note__title {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.project__note__content {
+  text-align: left;
+}
+.project__note__date {
   color: black;
+  font-size: 12px;
+  margin-top: 10px;
+  text-decoration: underline;
+
+  text-align: right;
+}
+.project__title {
+  width: 100%;
+
+  /* height: auto; */
+  /* border-bottom: 1px solid #eeeeef; */
+  border-radius: 3px;
+  font-size: 20px;
+  display: flex;
+  text-transform: uppercase;
+  justify-content: flex-start;
+}
+
+.project__container {
+  display: flex;
+  flex-direction: row;
+}
+.project__notes {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 600px;
+
+  padding: 12px;
+  margin-top: 60px;
+}
+
+.project__notepad__container {
+  margin-top: 60px;
+}
+.project__notepad {
+}
+
+.project__notepad__title {
+  box-sizing: border-box;
+  display: flex;
+
+  text-align: left;
+  min-width: 300px;
+  border-radius: 3px;
+  padding: 12px;
+  font: lighter 14px verdana;
+
+  line-height: 25px;
+  box-sizing: border-box;
+  padding-left: 20px;
+
+  border: 1px solid #eeeeef;
+  resize: none;
+}
+
+.project__notepad__textarea {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  min-width: 300px;
+  min-height: 300px;
+
+  border-radius: 3px;
+  padding: 12px;
+  font: normal 14px verdana;
+  line-height: 25px;
+  box-sizing: border-box;
+  padding-left: 20px;
+
+  border: 1px solid #eeeeef;
+  resize: none;
+}
+
+.project__notepad__submit {
+  width: 100%;
+  border: none;
+  background-color: rgb(8, 95, 117);
+
+  color: white;
+  font-size: 14px;
+  height: 25px;
+  cursor: pointer;
 }

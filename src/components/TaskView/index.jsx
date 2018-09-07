@@ -1,8 +1,9 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import WeekNav from "../WeekNav/index";
+import Stats from "../Stats/index";
 
-import { pushTaskNote } from "../../actions/requests";
+import { pushTaskNote, getTask } from "../../actions/requests";
 
 import "./style.css";
 
@@ -16,6 +17,10 @@ class TaskView extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.props.dispatch(getTask(this.props.match.params.projectId));
+  }
+
   handleNoteSubmit(e, id) {
     e.preventDefault();
     const title = this.title.current.value;
@@ -26,53 +31,79 @@ class TaskView extends React.Component {
 
     e.target.reset();
     this.props.dispatch(pushTaskNote(id, title, note));
+    this.props.dispatch(getTask(this.props.match.params.projectId));
   }
   render() {
     const { message } = this.state;
-    console.log("currentTask in render", this.props.currentTask);
-
-    //   const notes = this.props.currenTask.notes.map(note => (
-    //     <li key={note._id}>
-    //       <h3>{note.title}</h3>
-    //       <p>{note.body}</p>
-    //       <p>{note.date}</p>
-    //     </li>
-    //   ));
+    const notes = () => {
+      if (this.props.currentTask.notes) {
+        return this.props.currentTask.notes.map(note => (
+          <li key={note._id} className="project__note">
+            <h3 className="project__note__title">{note.title}</h3>
+            <div className="project__note__content">{note.body}</div>
+            <div className="project__note__date">
+              {new Date(note.date).toDateString()}
+            </div>
+          </li>
+        ));
+      }
+    };
 
     return (
       <Fragment>
         <WeekNav />
+
         <main>
-          {this.props.isFetching ? (
-            <div className="loading-message">
-              <i className="fas fa-spinner" />
-              <p>Loading...</p>
-            </div>
-          ) : (
-            <p>test</p>
-            // <p>{this.props.currentTask.task}</p>
-          )}
+          <section className="project__container">
+            <section>
+              {this.props.isFetching ? (
+                <div className="loading-message">
+                  <i className="fas fa-spinner" />
+                  <p>Loading...</p>
+                </div>
+              ) : (
+                <h2 className="project__title">
+                  {this.props.currentTask.task}
+                </h2>
+              )}
+              <Stats />
+            </section>
 
-          <section className="notepad__container">
-            <ul>notes go here</ul>
+            <section className="project__notes">
+              {this.props.currentTask.notes ? (
+                <ul>{notes()}</ul>
+              ) : (
+                <p>nonotes</p>
+              )}
+            </section>
 
-            <form
-              onSubmit={e => this.handleNoteSubmit(e, this.props.id)}
-              className="notepad"
-            >
-              <input
-                name="title"
-                type="text"
-                id="title"
-                placeholder="Your Title"
-                ref={this.title}
-              />
-              <textarea placeholder="Your Notepad" ref={this.note} />
-              <button className="notepad__submit" type="submit">
-                SUBMIT
-              </button>
-            </form>
-            <p>{message}</p>
+            <section className="project__notepad__container">
+              <h3>Add a new note</h3>
+              <form
+                onSubmit={e =>
+                  this.handleNoteSubmit(e, this.props.match.params.projectId)
+                }
+                className="project__notepad"
+              >
+                <input
+                  name="title"
+                  type="text"
+                  id="title"
+                  placeholder="Title"
+                  ref={this.title}
+                  className="project__notepad__title"
+                />
+                <textarea
+                  className="project__notepad__textarea"
+                  placeholder="Notepad"
+                  ref={this.note}
+                />
+                <button className="project__notepad__submit" type="submit">
+                  SUBMIT
+                </button>
+              </form>
+              <p>{message}</p>
+            </section>
           </section>
         </main>
       </Fragment>
@@ -80,18 +111,9 @@ class TaskView extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
-  const id = props.match.params.projectId;
-  const currentTask = state.taskList.filter(
-    task =>
-      parseInt(task._id, 10) === parseInt(props.match.params.projectId, 10)
-  )[0];
-
-  console.log("currentTask", currentTask);
-
+const mapStateToProps = state => {
   return {
-    id,
-    currentTask
+    currentTask: state.currentTask
   };
 };
 

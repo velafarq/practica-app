@@ -4,10 +4,15 @@ import {
   loginError,
   loginSuccess,
   logoutSuccess,
-  logoutRequest
+  logoutRequest,
+  isFetchingFalse,
+  isFetchingTrue,
+  errorFalse,
+  errorTrue
 } from "./index";
 
 export const register = (email, password) => dispatch => {
+  dispatch(isFetchingTrue());
   const data = JSON.stringify({ email, password });
   return fetch(`${API_BASE_URL}/auth/register`, {
     method: "POST",
@@ -23,8 +28,11 @@ export const register = (email, password) => dispatch => {
       if (data.token !== null && data.token !== undefined) {
         localStorage.setItem("token", data.token);
         dispatch(loginSuccess(data.token));
+        dispatch(isFetchingFalse());
+        dispatch(errorFalse());
       } else {
         dispatch(loginError("Username already taken."));
+        dispatch(errorTrue());
       }
     })
     .catch(error => console.log(error));
@@ -32,6 +40,7 @@ export const register = (email, password) => dispatch => {
 
 export const login = (email, password) => dispatch => {
   dispatch(loginRequest(email, password));
+  dispatch(isFetchingTrue());
   const data = JSON.stringify({
     email,
     password
@@ -51,15 +60,21 @@ export const login = (email, password) => dispatch => {
         localStorage.setItem("token", data.token);
 
         dispatch(loginSuccess(data.token));
+        dispatch(isFetchingFalse());
+        dispatch(errorFalse());
       } else {
         dispatch(loginError("Incorrect username or password."));
+        dispatch(errorTrue());
       }
     })
     .catch(error => console.log(error));
 };
 
 export const logout = () => dispatch => {
+  dispatch(isFetchingTrue());
   dispatch(logoutRequest());
   localStorage.removeItem("token");
+  dispatch(isFetchingFalse());
+  dispatch(errorFalse());
   dispatch(logoutSuccess());
 };

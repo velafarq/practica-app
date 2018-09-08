@@ -42,10 +42,10 @@ class NotesView extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  notes: state.notes,
-  isFetching: state.isFetching,
-  error: state.error,
-  isAuthenticated: state.isAuthenticated
+  notes: state.notes.notes,
+  isFetching: state.status.isFetching,
+  error: state.status.error,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({

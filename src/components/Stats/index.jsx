@@ -33,7 +33,7 @@ class Stats extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  practiceDuration: state.practiceDuration
+  practiceDuration: state.practices.practiceDuration
 });
 
 export default connect(mapStateToProps)(Stats);

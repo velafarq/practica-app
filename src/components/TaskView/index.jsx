@@ -113,7 +113,7 @@ class TaskView extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    currentTask: state.currentTask
+    currentTask: state.tasks.currentTask
   };
 };
 

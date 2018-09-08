@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated
   };
 };
 

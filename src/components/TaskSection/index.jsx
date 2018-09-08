@@ -157,10 +157,10 @@ class TaskSection extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  taskList: state.taskList,
-  practiceStatus: state.practiceStatus,
-  isFetching: state.isFetching,
-  error: state.error
+  taskList: state.tasks.taskList,
+  practiceStatus: state.practices.practiceStatus,
+  isFetching: state.status.isFetching,
+  error: state.status.error
 });
 
 const mapDispatchToProps = dispatch => ({

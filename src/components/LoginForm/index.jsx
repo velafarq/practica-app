@@ -87,10 +87,10 @@ export class LoginForm extends React.Component {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    isAuthenticated: state.isAuthenticated,
-    isFetching: state.isFetching,
-    error: state.error,
-    errorMessage: state.errorMessage
+    isAuthenticated: state.auth.isAuthenticated,
+    isFetching: state.auth.isFetching,
+    error: state.auth.error,
+    errorMessage: state.auth.errorMessage
   };
 };
 export default connect(mapStateToProps)(LoginForm);

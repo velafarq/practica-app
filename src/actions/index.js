@@ -103,7 +103,6 @@ export const practiceDuration = input => ({
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const loginRequest = (email, password) => ({
   type: LOGIN_REQUEST,
-  isFetching: true,
   isAuthenticated: false,
   email,
   password
@@ -112,7 +111,6 @@ export const loginRequest = (email, password) => ({
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const loginSuccess = token => ({
   type: LOGIN_SUCCESS,
-  isFetching: false,
   isAuthenticated: true,
   token: token,
   errorMessage: ""
@@ -121,7 +119,6 @@ export const loginSuccess = token => ({
 export const LOGIN_ERROR = "LOGIN_ERROR";
 export const loginError = message => ({
   type: LOGIN_ERROR,
-  isFetching: false,
   isAuthenticated: false,
   errorMessage: message
 });
@@ -129,13 +126,33 @@ export const loginError = message => ({
 export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 export const logoutRequest = () => ({
   type: LOGOUT_REQUEST,
-  isFetching: true,
+
   isAuthenticated: true
 });
 
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const logoutSuccess = () => ({
   type: LOGOUT_SUCCESS,
-  isFetching: false,
+
   isAuthenticated: false
+});
+
+export const IS_FETCHING_TRUE = "IS_FETCHING_TRUE";
+export const isFetchingTrue = () => ({
+  type: IS_FETCHING_TRUE
+});
+
+export const IS_FETCHING_FALSE = "IS_FETCHING_FALSE";
+export const isFetchingFalse = () => ({
+  type: IS_FETCHING_FALSE
+});
+
+export const ERROR_TRUE = "ERROR_TRUE";
+export const errorTrue = () => ({
+  type: ERROR_TRUE
+});
+
+export const ERROR_FALSE = "ERROR_FALSE";
+export const errorFalse = () => ({
+  type: ERROR_FALSE
 });

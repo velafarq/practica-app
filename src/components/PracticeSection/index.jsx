@@ -78,8 +78,8 @@ class PracticeSection extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  practiceStatus: state.practiceStatus,
-  practiceDuration: state.practiceDuration
+  practiceStatus: state.practices.practiceStatus,
+  practiceDuration: state.practices.practiceDuration
 });
 
 export default connect(mapStateToProps)(PracticeSection);

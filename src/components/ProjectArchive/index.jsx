@@ -2,11 +2,10 @@ import React, { Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import WeekNav from "../WeekNav/index";
-import Notepad from "../Notepad/index";
-import TaskView from "../TaskView/index";
+
 import "./style.css";
 
-class DayView extends React.Component {
+class ProjectArchive extends React.Component {
   render() {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/login" />;
@@ -15,11 +14,7 @@ class DayView extends React.Component {
     return (
       <Fragment>
         <WeekNav />
-        <main>
-          <TaskView />
-
-          <Notepad />
-        </main>
+        <main />
       </Fragment>
     );
   }
@@ -31,4 +26,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(DayView);
+export default connect(mapStateToProps)(ProjectArchive);

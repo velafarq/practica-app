@@ -36,9 +36,9 @@ export const addTask = task => ({
   task
 });
 
-export const TOGGLE_STATUS = "TOGGLE_STATUS";
-export const toggleStatus = (id, status) => ({
-  type: TOGGLE_STATUS,
+export const TOGGLE_TASK_STATUS = "TOGGLE_TASK_STATUS";
+export const toggleTaskStatus = (id, status) => ({
+  type: TOGGLE_TASK_STATUS,
   id,
   status
 });
@@ -114,7 +114,8 @@ export const loginSuccess = token => ({
   type: LOGIN_SUCCESS,
   isFetching: false,
   isAuthenticated: true,
-  token: token
+  token: token,
+  errorMessage: ""
 });
 
 export const LOGIN_ERROR = "LOGIN_ERROR";
@@ -122,8 +123,7 @@ export const loginError = message => ({
   type: LOGIN_ERROR,
   isFetching: false,
   isAuthenticated: false,
-  error: true,
-  message
+  errorMessage: message
 });
 
 export const LOGOUT_REQUEST = "LOGOUT_REQUEST";

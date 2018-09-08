@@ -10,6 +10,7 @@ import LoginForm from "../LoginForm/index";
 import RegisterForm from "../RegisterForm/index";
 import NotesView from "../NotesView";
 import TaskView from "../TaskView";
+import ProjectArchive from "../ProjectArchive/index";
 
 class App extends Component {
   render() {
@@ -18,7 +19,7 @@ class App extends Component {
         <Header />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/archive" />
+        <Route exact path="/archive" component={ProjectArchive} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/register" component={RegisterForm} />
         <Route exact path="/notes" component={NotesView} />

@@ -8,7 +8,7 @@ import {
   getTask,
   addTask,
   removeTask,
-  toggleStatus
+  toggleTaskStatus
 } from "../../actions/requests";
 
 class TaskSection extends React.Component {
@@ -31,7 +31,7 @@ class TaskSection extends React.Component {
   handleStatusChange(e, id, status) {
     e.preventDefault();
 
-    this.props.toggleStatus(id, !status);
+    this.props.toggleTaskStatus(id, !status);
   }
 
   handleRemove(e, id) {
@@ -168,7 +168,7 @@ const mapDispatchToProps = dispatch => ({
   getTasks: () => dispatch(getTasks()),
   addTask: task => dispatch(addTask(task)),
   removeTask: id => dispatch(removeTask(id)),
-  toggleStatus: (id, status) => dispatch(toggleStatus(id, status))
+  toggleTaskStatus: (id, status) => dispatch(toggleTaskStatus(id, status))
 });
 
 export default connect(

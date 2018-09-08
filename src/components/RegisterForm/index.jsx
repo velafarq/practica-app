@@ -47,6 +47,7 @@ export class RegisterForm extends React.Component {
       return <Redirect to="/dashboard" />;
     }
     const { errors } = this.state;
+    const { errorMessage } = this.props;
     return (
       <Fragment>
         <div className="block__entry">
@@ -97,6 +98,7 @@ export class RegisterForm extends React.Component {
               </Link>
             </p>
           </div>
+          {this.props.errorMessage && <p>{errorMessage}</p>}
         </div>
       </Fragment>
     );
@@ -105,7 +107,8 @@ export class RegisterForm extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.isAuthenticated
+    isAuthenticated: state.isAuthenticated,
+    errorMessage: state.errorMessage
   };
 };
 

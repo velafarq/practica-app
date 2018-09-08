@@ -11,7 +11,11 @@ import "./style.css";
 
 class Dashboard extends React.Component {
   render() {
-    if (!this.props.isAuthenticated) {
+    if (
+      !this.props.isAuthenticated ||
+      localStorage.getItem("token") === null ||
+      localStorage.getItem("token") === undefined
+    ) {
       return <Redirect to="/login" />;
     }
     return (

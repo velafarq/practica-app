@@ -32,9 +32,12 @@ export const getTask = id => dispatch => {
       return res.json();
     })
     .then(task => {
-      console.log("hey ho", task);
-      dispatch(action.getTaskSuccess(task));
+      console.log("this is the task", task);
+      if (task) {
+        dispatch(action.getTaskSuccess(task));
+      }
     })
+
     .catch(err => dispatch(action.getTaskError()));
 };
 
@@ -70,7 +73,7 @@ export const removeTask = id => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const toggleStatus = (id, status) => dispatch => {
+export const toggleTaskStatus = (id, status) => dispatch => {
   const data = JSON.stringify({
     status,
     _id: id
@@ -84,7 +87,7 @@ export const toggleStatus = (id, status) => dispatch => {
     }),
     body: data
   })
-    .then(() => dispatch(action.toggleStatus(id, status)))
+    .then(() => dispatch(action.toggleTaskStatus(id, status)))
     .catch(error => {
       console.log(error);
     });

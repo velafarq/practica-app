@@ -20,8 +20,12 @@ export const register = (email, password) => dispatch => {
       return res.json();
     })
     .then(data => {
-      localStorage.setItem("token", data.token);
-      dispatch(loginSuccess(data.token));
+      if (data.token !== null && data.token !== undefined) {
+        localStorage.setItem("token", data.token);
+        dispatch(loginSuccess(data.token));
+      } else {
+        dispatch(loginError("Username already taken."));
+      }
     })
     .catch(error => console.log(error));
 };
@@ -43,10 +47,15 @@ export const login = (email, password) => dispatch => {
       return res.json();
     })
     .then(data => {
-      localStorage.setItem("token", data.token);
-      dispatch(loginSuccess(data.token));
+      if (data.token !== null && data.token !== undefined) {
+        localStorage.setItem("token", data.token);
+
+        dispatch(loginSuccess(data.token));
+      } else {
+        dispatch(loginError("Incorrect username or password."));
+      }
     })
-    .catch(error => dispatch(loginError("There was an error")));
+    .catch(error => console.log(error));
 };
 
 export const logout = () => dispatch => {

@@ -13,6 +13,7 @@ export class LoginForm extends React.Component {
     this.email = React.createRef();
     this.password = React.createRef();
   }
+
   handleSubmit(e) {
     e.preventDefault();
     const email = this.email.current.value;
@@ -25,6 +26,7 @@ export class LoginForm extends React.Component {
     if (this.props.isAuthenticated) {
       return <Redirect to="/dashboard" />;
     }
+    const { errorMessage } = this.props;
     return (
       <Fragment>
         <div className="block__entry">
@@ -71,6 +73,7 @@ export class LoginForm extends React.Component {
               </Link>
             </p>
           </div>
+          {this.props.errorMessage && <p>{errorMessage}</p>}
           <div>
             <h3>Demo user credentials:</h3>
             <p>email: demo@user.com</p>
@@ -82,10 +85,12 @@ export class LoginForm extends React.Component {
   }
 }
 const mapStateToProps = state => {
+  console.log(state);
   return {
     isAuthenticated: state.isAuthenticated,
     isFetching: state.isFetching,
-    error: state.error
+    error: state.error,
+    errorMessage: state.errorMessage
   };
 };
 export default connect(mapStateToProps)(LoginForm);

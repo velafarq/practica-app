@@ -1,6 +1,6 @@
 import {
   ADD_TASK,
-  TOGGLE_STATUS,
+  TOGGLE_TASK_STATUS,
   PUSH_TASK_NOTE,
   UPDATE_TASK_PRACTICE,
   REMOVE_TASK,
@@ -33,7 +33,8 @@ const initialState = {
   practiceDuration: 0,
   error: false,
   isFetching: false,
-  isAuthenticated: localStorage.getItem("token") ? true : false
+  isAuthenticated: localStorage.getItem("token") ? true : false,
+  errorMessage: ""
 };
 
 const taskReducer = (state = initialState, action) => {
@@ -50,14 +51,16 @@ const taskReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
-        error: false
+        error: false,
+        errorMessage: ""
       });
 
     case LOGIN_ERROR:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: false,
-        error: true
+        error: true,
+        errorMessage: action.errorMessage
       });
 
     case LOGOUT_REQUEST:
@@ -77,7 +80,7 @@ const taskReducer = (state = initialState, action) => {
         taskList: [action.task, ...state.taskList]
       });
 
-    case TOGGLE_STATUS:
+    case TOGGLE_TASK_STATUS:
       return Object.assign({}, state, {
         taskList: state.taskList.map(task => {
           if (task._id === action.id) {
@@ -122,7 +125,8 @@ const taskReducer = (state = initialState, action) => {
     case GET_TASKS_SUCCESS:
       return Object.assign({}, state, {
         taskList: [...action.tasks],
-        isFetching: false
+        isFetching: false,
+        error: false
       });
 
     case GET_TASKS_ERROR:

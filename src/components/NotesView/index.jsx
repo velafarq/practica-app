@@ -32,8 +32,10 @@ class NotesView extends React.Component {
               <i className="fas fa-spinner" />
               <p>Loading...</p>
             </div>
-          ) : (
+          ) : this.props.notes.length > 0 ? (
             <ul className="notes">{notes}</ul>
+          ) : (
+            <p>You haven't added any notes yet.</p>
           )}
         </main>
       </Fragment>

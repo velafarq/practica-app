@@ -34,7 +34,7 @@ export class RegisterForm extends React.Component {
   handleValidation(password) {
     const errors = [];
 
-    if (password.length < 10) {
+    if (password.length < 8) {
       errors.push("Password should be at least 8 characters long");
     }
     if (password.length > 70) {

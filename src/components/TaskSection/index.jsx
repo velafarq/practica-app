@@ -60,7 +60,6 @@ class TaskSection extends React.Component {
         </div>
 
         <div>
-          <button className="tasks__task__expand">expand</button>
           <button
             title="delete"
             className="tasks__task__del"
@@ -158,7 +157,6 @@ class TaskSection extends React.Component {
 
 const mapStateToProps = state => ({
   taskList: state.tasks.taskList,
-  practiceStatus: state.practices.practiceStatus,
   isFetching: state.status.isFetching,
   error: state.status.error
 });

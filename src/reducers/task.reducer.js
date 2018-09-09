@@ -1,7 +1,8 @@
 import {
   ADD_TASK,
   TOGGLE_TASK_STATUS,
-  UPDATE_TASK_PRACTICE,
+  UPDATE_TASK_PRACTICE_SUCCESS,
+  RESET_TASK_PRACTICE_SUCCESS,
   PUSH_TASK_NOTE,
   GET_TASKS_REQUESTED,
   GET_TASKS_SUCCESS,
@@ -33,15 +34,21 @@ export default (state = initialState, action) => {
           return task;
         })
       });
-    case UPDATE_TASK_PRACTICE:
+    case UPDATE_TASK_PRACTICE_SUCCESS:
       return Object.assign({}, state, {
         taskList: state.taskList.map(task => {
           if (task._id === action.id) {
-            let updatedPracticeDuration =
-              parseInt(task.practiceDuration, 10) +
-              parseInt(action.practiceDuration, 10);
+            task.practiceDuration = action.practiceDuration;
+          }
+          return task;
+        })
+      });
 
-            task.practiceDuration = updatedPracticeDuration;
+    case RESET_TASK_PRACTICE_SUCCESS:
+      return Object.assign({}, state, {
+        taskList: state.taskList.map(task => {
+          if (task._id === action.id) {
+            task.practiceDuration = action.practiceDuration;
           }
           return task;
         })

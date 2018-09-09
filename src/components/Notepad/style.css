@@ -1,8 +1,14 @@
 .notepad {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   margin: 20px;
+  width: 100%;
+}
+
+.notepad__div {
+  max-width: 600px;
+  min-width: 300px;
 }
 
 .notepad__textarea {
@@ -10,8 +16,9 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  min-width: 400px;
-  min-height: 400px;
+  max-width: 600px;
+
+  height: 50vh;
 
   border-radius: 3px;
   padding: 12px;

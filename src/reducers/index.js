@@ -10,7 +10,7 @@ import {
   GET_NOTES_SUCCESS,
   INCREASE_PRACTICE,
   DECREASE_PRACTICE,
-  PRACTICE_DURATION,
+  TOTAL_PRACTICE_DURATION,
   GET_TASK_ERROR,
   GET_TASK_REQUESTED,
   GET_TASK_SUCCESS,
@@ -149,7 +149,7 @@ const taskReducer = (state = initialState, action) => {
         practiceStatus: newPracticeCount
       });
 
-    case PRACTICE_DURATION:
+    case TOTAL_PRACTICE_DURATION:
       const previous = parseFloat(state.practiceDuration);
       const current = parseFloat(action.input);
       const newPracticeStatus = previous + current;

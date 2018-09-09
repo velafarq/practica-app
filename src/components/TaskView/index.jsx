@@ -33,21 +33,36 @@ class TaskView extends React.Component {
     this.props.dispatch(pushTaskNote(id, title, note));
     this.props.dispatch(getTask(this.props.match.params.projectId));
   }
+
+  renderNotes() {
+    if (this.props.currentTask.notes && !this.props.isFetching) {
+      return this.props.currentTask.notes.map(note => (
+        <li key={note._id} className="project__note">
+          <h3 className="project__note__title">{note.title}</h3>
+          <div className="project__note__content">{note.body}</div>
+          <div className="project__note__date">
+            {new Date(note.date).toDateString()}
+          </div>
+        </li>
+      ));
+    }
+  }
   render() {
     const { message } = this.state;
-    const notes = () => {
-      if (this.props.currentTask.notes) {
-        return this.props.currentTask.notes.map(note => (
-          <li key={note._id} className="project__note">
-            <h3 className="project__note__title">{note.title}</h3>
-            <div className="project__note__content">{note.body}</div>
-            <div className="project__note__date">
-              {new Date(note.date).toDateString()}
-            </div>
-          </li>
-        ));
-      }
-    };
+
+    // const notes = () => {
+    //   if (this.props.currentTask.notes) {
+    //     return this.props.currentTask.notes.map(note => (
+    //       <li key={note._id} className="project__note">
+    //         <h3 className="project__note__title">{note.title}</h3>
+    //         <div className="project__note__content">{note.body}</div>
+    //         <div className="project__note__date">
+    //           {new Date(note.date).toDateString()}
+    //         </div>
+    //       </li>
+    //     ));
+    //   }
+    // };
 
     return (
       <Fragment>
@@ -66,44 +81,49 @@ class TaskView extends React.Component {
                   {this.props.currentTask.task}
                 </h2>
               )}
-              <Stats />
-            </section>
+              <Stats taskId={this.props.match.params.projectId} />
+              <section className="project__notepad__container">
+                <div className="project__notepad__title__box">
+                  <h3 className="project__notepad__main-title">ADD NOTE</h3>
+                </div>
+                <div className="project__notepad__responsive__container">
+                  <form
+                    onSubmit={e =>
+                      this.handleNoteSubmit(
+                        e,
+                        this.props.match.params.projectId
+                      )
+                    }
+                    className="project__notepad"
+                  >
+                    <input
+                      name="title"
+                      type="text"
+                      id="title"
+                      placeholder="Title"
+                      ref={this.title}
+                      className="project__notepad__title"
+                    />
+                    <textarea
+                      className="project__notepad__textarea"
+                      ref={this.note}
+                    />
+                    <button className="project__notepad__submit" type="submit">
+                      SUBMIT
+                    </button>
+                  </form>
+                </div>
 
-            <section className="project__notes">
-              {this.props.currentTask.notes ? (
-                <ul>{notes()}</ul>
-              ) : (
-                <p>nonotes</p>
-              )}
+                <p>{message}</p>
+              </section>
             </section>
+          </section>
 
-            <section className="project__notepad__container">
-              <h3>Add a new note</h3>
-              <form
-                onSubmit={e =>
-                  this.handleNoteSubmit(e, this.props.match.params.projectId)
-                }
-                className="project__notepad"
-              >
-                <input
-                  name="title"
-                  type="text"
-                  id="title"
-                  placeholder="Title"
-                  ref={this.title}
-                  className="project__notepad__title"
-                />
-                <textarea
-                  className="project__notepad__textarea"
-                  placeholder="Notepad"
-                  ref={this.note}
-                />
-                <button className="project__notepad__submit" type="submit">
-                  SUBMIT
-                </button>
-              </form>
-              <p>{message}</p>
-            </section>
+          <section className="project__notes">
+            <div className="project__notes__title__box">
+              <h3 className="project__notes__title">project notes</h3>
+            </div>
+            <ul>{this.renderNotes()}</ul>
           </section>
         </main>
       </Fragment>
@@ -113,7 +133,9 @@ class TaskView extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    currentTask: state.tasks.currentTask
+    currentTask: state.tasks.currentTask,
+    isFetching: state.status.isFetching,
+    taskList: state.tasks.taskList
   };
 };
 

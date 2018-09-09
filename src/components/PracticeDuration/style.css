@@ -1,14 +1,24 @@
 .practice__form {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.practice__status__input-submit {
+}
+.practice__status {
+  font-size: 18px;
+  text-align: left;
+}
 .practice__time {
   margin-left: 4px;
   box-sizing: border-box;
   max-width: 50px;
   border: 2px solid rgb(8, 95, 117);
   padding: 2px;
+  font-size: 12px;
+  height: 20px;
 }
 
 .practice__submit {
@@ -17,7 +27,8 @@
   text-transform: uppercase;
   color: white;
   font-size: 12px;
-
+  height: 20px;
+  width: 50px;
   cursor: pointer;
   text-align: center;
 }
@@ -25,3 +36,25 @@
 .message {
   text-align: center;
 }
+
+/* .stats__log {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.stat__reset {
+  border: none;
+  background-color: rgb(8, 95, 117);
+  text-transform: uppercase;
+  color: white;
+  font-size: 12px;
+  height: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.day__stat {
+  font-size: 18px;
+  text-align: left;
+} */

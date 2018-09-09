@@ -126,7 +126,8 @@ export const toggleTaskStatus = (id, status) => dispatch => {
 export const updateTaskPractice = (id, practiceDuration) => dispatch => {
   dispatch(action.isFetchingTrue());
   const data = JSON.stringify({
-    practiceDuration
+    practiceDuration,
+    _id: id
   });
 
   return fetch(`${API_BASE_URL}/tasks/${id}`, {
@@ -138,7 +139,33 @@ export const updateTaskPractice = (id, practiceDuration) => dispatch => {
     body: data
   })
     .then(() => {
-      dispatch(action.updateTaskPractice(id, practiceDuration));
+      dispatch(action.updateTaskPracticeSuccess(id, practiceDuration));
+      dispatch(action.isFetchingFalse());
+      dispatch(action.errorFalse());
+    })
+    .catch(error => {
+      dispatch(action.errorTrue());
+      console.log(error);
+    });
+};
+
+export const resetTaskPractice = (id, practiceDuration) => dispatch => {
+  dispatch(action.isFetchingTrue());
+  const data = JSON.stringify({
+    practiceDuration,
+    _id: id
+  });
+
+  return fetch(`${API_BASE_URL}/tasks/${id}`, {
+    method: "PUT",
+    headers: new Headers({
+      "Content-Type": "application/json",
+      Authorization: `bearer ${localStorage.getItem("token")}`
+    }),
+    body: data
+  })
+    .then(() => {
+      dispatch(action.resetTaskPracticeSuccess(id, practiceDuration));
       dispatch(action.isFetchingFalse());
       dispatch(action.errorFalse());
     })
@@ -164,9 +191,9 @@ export const pushTaskNote = (id, title, body) => dispatch => {
     body: data
   })
     .then(() => {
+      dispatch(action.pushTaskNote(id, title, body));
       dispatch(action.isFetchingFalse());
       dispatch(action.errorFalse());
-      dispatch(action.pushTaskNote(id, title, body));
     })
     .catch(error => {
       dispatch(action.errorTrue());

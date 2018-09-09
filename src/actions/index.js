@@ -51,9 +51,13 @@ export const pushTaskNote = (id, title, body) => ({
   body
 });
 
-export const UPDATE_TASK_PRACTICE = "UPDATE_TASK_PRACTICE";
-export const updateTaskPractice = (id, practiceDuration) => ({
-  type: UPDATE_TASK_PRACTICE,
+export const RESET_TASK_PRACTICE_SUCCESS = "REST_TASK_PRACTICE_SUCCESS";
+export const resetTaskPracticeSuccess = () => ({
+  type: RESET_TASK_PRACTICE_SUCCESS
+});
+export const UPDATE_TASK_PRACTICE_SUCCESS = "UPDATE_TASK_PRACTICE_SUCCESS";
+export const updateTaskPracticeSuccess = (id, practiceDuration) => ({
+  type: UPDATE_TASK_PRACTICE_SUCCESS,
   id,
   practiceDuration
 });
@@ -84,19 +88,9 @@ export const addNote = note => ({
   note
 });
 
-export const INCREASE_PRACTICE = "INCREASE_PRACTICE";
-export const increasePractice = () => ({
-  type: INCREASE_PRACTICE
-});
-
-export const DECREASE_PRACTICE = "DECREASE_PRACTICE";
-export const decreasePractice = () => ({
-  type: DECREASE_PRACTICE
-});
-
-export const PRACTICE_DURATION = "PRACTICE_DURATION";
-export const practiceDuration = input => ({
-  type: PRACTICE_DURATION,
+export const TOTAL_PRACTICE_DURATION = "TOTAL_PRACTICE_DURATION";
+export const totalPracticeDuration = input => ({
+  type: TOTAL_PRACTICE_DURATION,
   input
 });
 

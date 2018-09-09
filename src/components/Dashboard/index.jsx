@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import WeekNav from "../WeekNav/index";
 
 import TaskSection from "../TaskSection/index";
-import Stats from "../Stats/index";
+import Notepad from "../Notepad/index";
 
 import "./style.css";
 
@@ -22,8 +22,8 @@ class Dashboard extends React.Component {
       <Fragment>
         <WeekNav />
         <main className="background">
-          <Stats />
           <TaskSection />
+          <Notepad />
         </main>
       </Fragment>
     );
@@ -31,8 +31,10 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log("dashbaord state", state);
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    currentTask: state.currentTask
   };
 };
 

@@ -21,42 +21,42 @@ class LandingPage extends React.Component {
           <h2 className="about__title">ABOUT</h2>
           <p className="about__body">
             Practica is a practice scheduler dedicated to helping musicians keep
-            track of their practice sessions, notes, and goals. Whether music is
-            your full-time occupation, or your after-work hobby, Practica will
-            be there to help guide you along.
+            track of their current projects, practice sessions and notes.
+            Whether music is your full-time occupation, or your after-work
+            hobby, Practica will be there to help guide you along.
           </p>
 
           <section className="description">
             <div className="description__box">
               <i className="fas fa-sun" />
-              <p className="description__box__title">Schedule daily tasks</p>
+              <p className="description__box__title">Create new projects</p>
               <p>
-                Keep track of your daily practice tasks and plan them for the
-                future. Log your practice hours, practice regularity and
-                insights from your sessions.
+                Keep track of your practice goals by creating new projects. Log
+                your practice hours and insights from your sessions.
               </p>
             </div>
             <div className="description__box">
-              <i className="fas fa-clipboard-list" />
-              <p className="description__box__title">View weekly stats</p>
+              <i className="fas fa-trophy" />
+              <p className="description__box__title">
+                View your practice stats
+              </p>
               <p>
-                Every week, Practica logs your practice days, hours, tasks
-                completed and goals achieved. Practica will also remeber your
-                past sessions so that you can compare your results to previous
-                weeks and track your progress.
+                With Practica, you can log your practice hours for each project
+                and reset them when you've achieved your desired practice goal.
+                Practica will remeber your past projects so that you can compare
+                your results to current projects and track your progress.
               </p>
             </div>
 
             <div className="description__box">
-              <i className="fas fa-trophy" />
+              <i className="fas fa-clipboard-list" />
               <p className="description__box__title">
-                Keep track of your goals
+                Keep track of your notes
               </p>
               <p>
-                Add long-term or short-term goals as you work and mark them off
-                when you have achieved them. Through the regular use of
-                Practica, you will have a better grasp on your goals and
-                achievements as a musician.
+                Practica is like your own personal music journal. Create general
+                notes or notes related to specific projects and access them any
+                time.
               </p>
             </div>
           </section>

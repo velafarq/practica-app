@@ -35,6 +35,7 @@ export const register = (email, password) => dispatch => {
         dispatch(errorTrue());
       }
     })
+
     .catch(error => console.log(error));
 };
 

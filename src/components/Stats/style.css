@@ -2,13 +2,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  height: 230px;
-
-  margin: 20px;
-  border: 1px solid #eeeeef;
-  border-radius: 3px;
-  padding: 12px;
+  margin-top: 60px;
 }
 .stats__title__box {
   width: 100%;

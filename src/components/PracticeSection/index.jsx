@@ -10,7 +10,8 @@ class PracticeSection extends React.Component {
 
     this.practiceTime = React.createRef();
     this.state = {
-      submitMessage: ""
+      submitMessage: "",
+      practiceUpdate: false
     };
   }
 
@@ -21,6 +22,7 @@ class PracticeSection extends React.Component {
     this.props.dispatch(practiceDuration(practiceTime));
 
     const submitMessage = "Practice status updated!";
+    this.setState({ practiceUpdate: true });
 
     e.target.reset();
     this.setState({ submitMessage });

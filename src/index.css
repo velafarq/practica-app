@@ -38,12 +38,15 @@ body {
 }
 
 main {
+  box-sizing: border-box;
   margin: auto;
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding-top: 160px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 @media only screen and (min-width: 1000px) {
   main {

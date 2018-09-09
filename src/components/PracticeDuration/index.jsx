@@ -39,7 +39,7 @@ class PracticeDuration extends React.Component {
 
   render() {
     const { submitMessage } = this.state;
-    const time = this.props.currentTask.practiceDuration;
+
     return (
       <Fragment>
         {this.props.isFetching ? (

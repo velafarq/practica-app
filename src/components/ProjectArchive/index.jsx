@@ -1,20 +1,78 @@
 import React, { Fragment } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import WeekNav from "../WeekNav/index";
+import { getTasks } from "../../actions/requests";
 
 import "./style.css";
 
 class ProjectArchive extends React.Component {
+  componentDidMount() {
+    this.props.getTasks();
+  }
+
   render() {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/login" />;
     }
+    console.log(this.props.taskList);
+    const taskHeadings = (
+      <li key="task-headings" className="project-archive__main">
+        <div className="project-archive__flex-child-start">
+          <h3 className="project-archive__title hidden">Headings</h3>
+        </div>
+
+        <div className="project-archive__flex-child-end">
+          <p>STATUS</p>
+          <p>NOTES</p>
+          <p>DATE</p>
+          <p>HOURS LOGGED</p>
+        </div>
+      </li>
+    );
+    const taskList = this.props.taskList.map(task => (
+      <li key={task._id} className="project-archive__main">
+        <div className="project-archive__flex-child-start">
+          <Link to={`/dashboard/${task._id}`}>
+            <h3 className="project-archive__title">{task.task}</h3>
+          </Link>
+        </div>
+
+        <div className="project-archive__flex-child-end">
+          {task.status ? (
+            <p>Inactive</p>
+          ) : (
+            <p className="text-active"> Active</p>
+          )}
+          <p>
+            {task.notes.length}{" "}
+            {task.notes.length === 1 ? <span>note</span> : <span>notes</span>}{" "}
+          </p>
+          <p>{task.date}</p>
+          <p>{task.practiceDuration}</p>
+        </div>
+      </li>
+    ));
 
     return (
       <Fragment>
         <WeekNav />
-        <main />
+
+        <main>
+          {this.props.isFetching ? (
+            <div className="loading-message">
+              <i className="fas fa-spinner" />
+              <p>Loading...</p>
+            </div>
+          ) : this.props.taskList.length > 0 ? (
+            <ul className="project-archive">
+              <li>{taskHeadings}</li>
+              {taskList}
+            </ul>
+          ) : (
+            <p>You don't have any projects.</p>
+          )}
+        </main>
       </Fragment>
     );
   }
@@ -22,8 +80,18 @@ class ProjectArchive extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    isFetching: state.status.isFetching,
+    error: state.status.error,
+    taskList: state.tasks.taskList
   };
 };
 
-export default connect(mapStateToProps)(ProjectArchive);
+const mapDispatchToProps = dispatch => ({
+  getTasks: () => dispatch(getTasks())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProjectArchive);

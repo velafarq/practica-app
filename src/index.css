@@ -47,6 +47,8 @@ main {
   padding-top: 160px;
   padding-right: 20px;
   padding-left: 20px;
+  flex-basis: 100%;
+  flex-wrap: wrap;
 }
 @media only screen and (min-width: 1000px) {
   main {

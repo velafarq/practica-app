@@ -70,60 +70,51 @@ class TaskView extends React.Component {
 
         <main>
           <section className="project__container">
-            <section>
-              {this.props.isFetching ? (
-                <div className="loading-message">
-                  <i className="fas fa-spinner" />
-                  <p>Loading...</p>
-                </div>
-              ) : (
-                <h2 className="project__title">
-                  {this.props.currentTask.task}
-                </h2>
-              )}
-              <Stats taskId={this.props.match.params.projectId} />
-              <section className="project__notepad__container">
-                <div className="project__notepad__title__box">
-                  <h3 className="project__notepad__main-title">ADD NOTE</h3>
-                </div>
-                <div className="project__notepad__responsive__container">
-                  <form
-                    onSubmit={e =>
-                      this.handleNoteSubmit(
-                        e,
-                        this.props.match.params.projectId
-                      )
-                    }
-                    className="project__notepad"
-                  >
-                    <input
-                      name="title"
-                      type="text"
-                      id="title"
-                      placeholder="Title"
-                      ref={this.title}
-                      className="project__notepad__title"
-                    />
-                    <textarea
-                      className="project__notepad__textarea"
-                      ref={this.note}
-                    />
-                    <button className="project__notepad__submit" type="submit">
-                      SUBMIT
-                    </button>
-                  </form>
-                </div>
-
-                <p>{message}</p>
-              </section>
+            {this.props.isFetching ? (
+              <div className="loading-message">
+                <i className="fas fa-spinner" />
+                <p>Loading...</p>
+              </div>
+            ) : (
+              <h2 className="project__title">{this.props.currentTask.task}</h2>
+            )}
+            <Stats taskId={this.props.match.params.projectId} />
+            <section className="project__notes">
+              <div className="project__notes__title__box">
+                <h3 className="project__notes__title">project notes</h3>
+              </div>
+              <ul>{this.renderNotes()}</ul>
             </section>
           </section>
-
-          <section className="project__notes">
-            <div className="project__notes__title__box">
-              <h3 className="project__notes__title">project notes</h3>
+          <section className="project__notepad__container">
+            <div className="project__notepad__title__box">
+              <h3 className="project__notepad__main-title">ADD NOTE</h3>
             </div>
-            <ul>{this.renderNotes()}</ul>
+
+            <form
+              onSubmit={e =>
+                this.handleNoteSubmit(e, this.props.match.params.projectId)
+              }
+              className="project__notepad"
+            >
+              <input
+                name="title"
+                type="text"
+                id="title"
+                ref={this.title}
+                className="project__notepad__title"
+              />
+              <textarea
+                className="project__notepad__textarea"
+                ref={this.note}
+              />
+              <button className="project__notepad__submit" type="submit">
+                SUBMIT
+              </button>
+            </form>
+            {/* </div> */}
+
+            <p>{message}</p>
           </section>
         </main>
       </Fragment>

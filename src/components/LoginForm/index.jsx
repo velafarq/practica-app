@@ -42,7 +42,7 @@ export class LoginForm extends React.Component {
               <input
                 title="email"
                 type="email"
-                placeholder="email"
+                placeholder="Email"
                 name="user-email"
                 id="user-email"
                 component="input"
@@ -54,7 +54,7 @@ export class LoginForm extends React.Component {
               <input
                 title="Password"
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 name="password"
                 id="user-password"
                 component="input"
@@ -67,17 +67,18 @@ export class LoginForm extends React.Component {
             </button>
           </form>
           <div className="block__entry__alternate">
-            <p>
-              <Link to="/register" id="alternate">
-                Register
-              </Link>
-            </p>
+            <p>Don't have an account yet?</p>
+            <Link to="/register" id="alternate">
+              Register
+            </Link>
           </div>
           {this.props.errorMessage && <p>{errorMessage}</p>}
-          <div>
+          <div className="demo-user">
             <h3>Demo user credentials:</h3>
-            <p>email: demo@user.com</p>
-            <p>password: demouser2018</p>
+            <div>
+              <p>email: demo@user.com</p>
+              <p>password: demouser2018</p>
+            </div>
           </div>
         </div>
       </Fragment>

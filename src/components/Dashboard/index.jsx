@@ -29,7 +29,6 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log("dashbaord state", state);
   return {
     isAuthenticated: state.auth.isAuthenticated,
     currentTask: state.currentTask

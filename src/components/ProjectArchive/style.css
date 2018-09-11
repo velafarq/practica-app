@@ -13,12 +13,10 @@
 .project-archive__main {
   display: flex;
   align-items: center;
-
   border-bottom: 1px solid #eeeeef;
   box-sizing: border-box;
   flex-direction: column;
   width: 100%;
-  /* flex-wrap: wrap; */
 }
 
 @media only screen and (min-width: 1000px) {
@@ -41,9 +39,10 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
-  display: flex;
-  align-items: center;
-  width: 100%;
+}
+
+.project-archive__flex-child-end p {
+  text-align: left;
 }
 .project-archive__title {
   padding: 0;

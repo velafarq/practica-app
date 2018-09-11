@@ -39,7 +39,7 @@ export const getTask = id => dispatch => {
       return res.json();
     })
     .then(task => {
-      console.log("this is the task", task);
+      console.log("task", task);
       if (task) {
         dispatch(action.getTaskSuccess(task));
         dispatch(action.isFetchingFalse());
@@ -115,7 +115,6 @@ export const toggleTaskStatus = (id, status) => dispatch => {
       dispatch(action.toggleTaskStatus(id, status));
 
       dispatch(action.isFetchingFalse());
-      dispatch(action.errorFalse());
     })
     .catch(error => {
       dispatch(action.errorTrue());
@@ -141,7 +140,6 @@ export const updateTaskPractice = (id, practiceDuration) => dispatch => {
     .then(() => {
       dispatch(action.updateTaskPracticeSuccess(id, practiceDuration));
       dispatch(action.isFetchingFalse());
-      dispatch(action.errorFalse());
     })
     .catch(error => {
       dispatch(action.errorTrue());
@@ -165,9 +163,8 @@ export const resetTaskPractice = (id, practiceDuration) => dispatch => {
     body: data
   })
     .then(() => {
-      dispatch(action.resetTaskPracticeSuccess(id, practiceDuration));
+      dispatch(action.resetTaskPracticeSuccess());
       dispatch(action.isFetchingFalse());
-      dispatch(action.errorFalse());
     })
     .catch(error => {
       dispatch(action.errorTrue());
@@ -190,10 +187,10 @@ export const pushTaskNote = (id, title, body) => dispatch => {
     }),
     body: data
   })
-    .then(() => {
-      dispatch(action.pushTaskNote(id, title, body));
+    .then(res => res.json())
+    .then(res => {
+      dispatch(action.pushTaskNote(res.notes));
       dispatch(action.isFetchingFalse());
-      dispatch(action.errorFalse());
     })
     .catch(error => {
       dispatch(action.errorTrue());

@@ -8,16 +8,18 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  max-width: 600px;
-  margin: 20px;
-  /* border: 1px solid #eeeeef; */
+  justify-content: center;
+
+  margin-top: 20px;
+
   border-radius: 3px;
-  padding: 12px;
+  /* padding: 12px; */
 }
 
 @media only screen and (min-width: 1000px) {
   .day {
     width: 500px;
+    margin: 20px;
   }
 }
 
@@ -36,6 +38,9 @@
   padding: 0;
 }
 
+.inactive {
+  margin-top: 30px;
+}
 .todo {
   display: flex;
   justify-content: center;
@@ -83,7 +88,23 @@
   justify-content: space-between;
   height: auto;
   border-bottom: 1px solid #eeeeef;
-  font-size: 20px;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.tasks__task__title {
+  display: flex;
+  text-align: center;
+}
+
+.tasks__task__title {
+  text-align: left;
+}
+
+.tasks__task__options {
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 .tasks__task__del {
@@ -104,12 +125,20 @@
   text-transform: uppercase;
   color: white;
   font-size: 8px;
-
+  padding: 4px;
   cursor: pointer;
   text-align: center;
-  margin: 20px;
+  align-items: center;
+  justify-content: center;
   margin-top: 0;
   font-weight: lighter;
+}
+
+.tasks__task__expand a {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
 
 .tasks__task__check {
@@ -125,4 +154,10 @@
 
 .tasks__task__title--completed {
   color: lightgray;
+}
+
+@media only screen and (min-width: 1000px) {
+  .tasks__task {
+    font-size: 20px;
+  }
 }

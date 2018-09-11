@@ -13,7 +13,7 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <header className="banner headerDashboard">
+      <header className="banner ">
         <div className="header">
           <Link to="/">
             <div className="header__logo">

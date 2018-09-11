@@ -30,7 +30,7 @@ class LandingPage extends React.Component {
             <div className="description__box">
               <i className="fas fa-sun" />
               <p className="description__box__title">Create new projects</p>
-              <p>
+              <p className="description__box__body">
                 Keep track of your practice goals by creating new projects. Log
                 your practice hours and insights from your sessions.
               </p>
@@ -40,7 +40,7 @@ class LandingPage extends React.Component {
               <p className="description__box__title">
                 View your practice stats
               </p>
-              <p>
+              <p className="description__box__body">
                 With Practica, you can log your practice hours for each project
                 and reset them when you've achieved your desired practice goal.
                 Practica will remeber your past projects so that you can compare
@@ -53,14 +53,14 @@ class LandingPage extends React.Component {
               <p className="description__box__title">
                 Keep track of your notes
               </p>
-              <p>
+              <p className="description__box__body">
                 Practica is like your own personal music journal. Create general
                 notes or notes related to specific projects and access them any
                 time.
               </p>
             </div>
           </section>
-          <section>
+          <section className="info__register__box">
             <Link to="/register" className="info__register">
               SIGN UP
             </Link>

@@ -4,18 +4,14 @@ a {
 }
 
 .block__entry {
-  /* background-image: url("https://images.pexels.com/photos/6966/abstract-music-rock-bw.jpg?cs=srgb&dl=audio-black-and-white-black-and-white-6966.jpg&fm=jpg"); */
-  height: 80vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
+  height: 90vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 .block__entry__form {
@@ -29,13 +25,9 @@ a {
 .block__entry__form__title {
   text-decoration: underline;
   color: rgb(8, 95, 117);
-  font-size: 2em;
+  font-size: 1.5em;
   letter-spacing: 2px;
-  /* color: white; */
-
-  /* width: 15vh;
-    font-size: 2em;
-    border-bottom: 4px solid white; */
+  font-weight: lighter;
 }
 
 .block__entry__form__input {
@@ -59,7 +51,7 @@ a {
 }
 .block__entry__form__input input {
   padding: 0;
-  margin: 0;
+  margin: 5px;
   height: 100%;
   border-style: none;
   color: rgb(13, 57, 94);
@@ -68,18 +60,25 @@ a {
   background-color: rgb(255, 255, 255);
 }
 
+.block__entry__form__input input::placeholder {
+  font-size: 1em;
+}
+
 .block__entry__form__submit {
   margin-top: 20px;
+  padding: 5px;
   border-style: none;
   background-color: rgb(8, 95, 117);
   width: 100%;
   color: white;
-  font-size: 1 em;
-  cursor: pointer; /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.027), 0 6px 6px rgba(0, 0, 0, 0.23); */
+  font-size: 1em;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
+  text-transform: uppercase;
+  font-weight: lighter;
 }
 
 .block__entry__form__submit:hover {
@@ -96,17 +95,40 @@ a {
 
 #alternate {
   color: rgb(8, 95, 117);
-  font-size: 20px;
+  font-size: 15px;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
 .block__entry__alternate #alternate:hover {
   cursor: pointer;
   color: orange;
   text-decoration: none;
 }
+.demo-user {
+  margin-top: 50px;
+}
+.demo-user h3 {
+  font-weight: lighter;
+  text-decoration: underline;
+}
 
-@media only screen and (min-width: 570px) {
+.demo-user p {
+  margin: 0;
+}
+@media only screen and (min-width: 1000px) {
+  .block__entry {
+    padding-top: 0;
+  }
+
+  .block__entry__form__title {
+    font-size: 2em;
+  }
   .block__entry__form__input input {
     font-size: 2em;
+  }
+
+  .block__entry__form__input input::placeholder {
+    font-size: 20px;
   }
 
   .block__entry__form__submit {

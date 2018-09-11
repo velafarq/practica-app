@@ -44,11 +44,9 @@ export const toggleTaskStatus = (id, status) => ({
 });
 
 export const PUSH_TASK_NOTE = "PUSH_TASK_NOTE";
-export const pushTaskNote = (id, title, body) => ({
+export const pushTaskNote = notes => ({
   type: PUSH_TASK_NOTE,
-  id,
-  title,
-  body
+  notes
 });
 
 export const RESET_TASK_PRACTICE_SUCCESS = "REST_TASK_PRACTICE_SUCCESS";

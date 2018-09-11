@@ -11,53 +11,43 @@ class Stats extends React.Component {
     this.props.dispatch(resetTaskPractice(id, 0));
   }
   render() {
-    const renderThis = () => {
-      if (this.props.isFetching) {
-        return (
-          <div className="loading-message">
-            <i className="fas fa-spinner" />
-            <p>Loading...</p>
+    return (
+      <Fragment>
+        <section className="stats">
+          <div className="stats__title__box">
+            <h2 className="stats__title">Project Practice Log</h2>
           </div>
-        );
-      } else {
-        return (
-          <Fragment>
-            <section className="stats">
-              <div className="stats__title__box">
-                <h2 className="stats__title">Project Practice Log</h2>
-              </div>
-              <div>
-                <div className="stats__log">
-                  <p className="day__stat">
-                    <span className="day__stat__num">
-                      {this.props.currentTask.practiceDuration}
-                      {"   "}
-                    </span>
-                    hours
-                  </p>
-                  <button
-                    onClick={e =>
-                      this.handlePracticeReset(e, this.props.currentTask._id)
-                    }
-                    className="stat__reset"
-                  >
-                    Reset
-                  </button>
-                </div>
+          <div>
+            <div className="stats__log">
+              <p className="day__stat">
+                <span className="day__stat__num">
+                  {this.props.currentTask.practiceDuration}
+                  {"   "}
+                </span>
+                hours
+              </p>
+              <button
+                onClick={e =>
+                  this.handlePracticeReset(e, this.props.currentTask._id)
+                }
+                className="stat__reset"
+              >
+                Reset
+              </button>
+            </div>
 
-                <PracticeDuration />
-              </div>
-            </section>
-          </Fragment>
-        );
-      }
-    };
-    return <Fragment>{renderThis()}</Fragment>;
+            <PracticeDuration />
+          </div>
+        </section>
+      </Fragment>
+    );
   }
 }
-const mapStateToProps = state => ({
-  currentTask: state.tasks.currentTask,
-  isFetching: state.status.isFetching
-});
+const mapStateToProps = state => {
+  return {
+    currentTask: state.tasks.currentTask,
+    isFetching: state.status.isFetching
+  };
+};
 
 export default connect(mapStateToProps)(Stats);

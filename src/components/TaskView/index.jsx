@@ -26,43 +26,34 @@ class TaskView extends React.Component {
     const title = this.title.current.value;
     const note = this.note.current.value;
 
-    const message = "Your post was successfuly submitted!";
+    const message = "Your post was submitted!";
     this.setState({ message });
 
     e.target.reset();
     this.props.dispatch(pushTaskNote(id, title, note));
-    this.props.dispatch(getTask(this.props.match.params.projectId));
   }
 
   renderNotes() {
-    if (this.props.currentTask.notes && !this.props.isFetching) {
-      return this.props.currentTask.notes.map(note => (
-        <li key={note._id} className="project__note">
-          <h3 className="project__note__title">{note.title}</h3>
-          <div className="project__note__content">{note.body}</div>
-          <div className="project__note__date">
-            {new Date(note.date).toDateString()}
-          </div>
-        </li>
-      ));
+    let body;
+    if (this.props.currentTask.notes) {
+      if (this.props.currentTask.notes.length === 0) {
+        body = <p>Add a note to begin your project journey.</p>;
+      } else {
+        body = this.props.currentTask.notes.map(note => (
+          <li key={note._id} className="project__note">
+            <h3 className="project__note__title">{note.title}</h3>
+            <div className="project__note__content">{note.body}</div>
+            <div className="project__note__date">
+              {new Date(note.date).toDateString()}
+            </div>
+          </li>
+        ));
+      }
+      return body;
     }
   }
   render() {
     const { message } = this.state;
-
-    // const notes = () => {
-    //   if (this.props.currentTask.notes) {
-    //     return this.props.currentTask.notes.map(note => (
-    //       <li key={note._id} className="project__note">
-    //         <h3 className="project__note__title">{note.title}</h3>
-    //         <div className="project__note__content">{note.body}</div>
-    //         <div className="project__note__date">
-    //           {new Date(note.date).toDateString()}
-    //         </div>
-    //       </li>
-    //     ));
-    //   }
-    // };
 
     return (
       <Fragment>
@@ -70,19 +61,14 @@ class TaskView extends React.Component {
 
         <main>
           <section className="project__container">
-            {this.props.isFetching ? (
-              <div className="loading-message">
-                <i className="fas fa-spinner" />
-                <p>Loading...</p>
-              </div>
-            ) : (
-              <h2 className="project__title">{this.props.currentTask.task}</h2>
-            )}
+            <h2 className="project__title">{this.props.currentTask.task}</h2>
+
             <Stats taskId={this.props.match.params.projectId} />
             <section className="project__notes">
               <div className="project__notes__title__box">
                 <h3 className="project__notes__title">project notes</h3>
               </div>
+
               <ul>{this.renderNotes()}</ul>
             </section>
           </section>
@@ -112,7 +98,6 @@ class TaskView extends React.Component {
                 SUBMIT
               </button>
             </form>
-            {/* </div> */}
 
             <p>{message}</p>
           </section>
@@ -125,8 +110,7 @@ class TaskView extends React.Component {
 const mapStateToProps = state => {
   return {
     currentTask: state.tasks.currentTask,
-    isFetching: state.status.isFetching,
-    taskList: state.tasks.taskList
+    isFetching: state.status.isFetching
   };
 };
 

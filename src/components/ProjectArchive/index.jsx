@@ -15,21 +15,7 @@ class ProjectArchive extends React.Component {
     if (!this.props.isAuthenticated) {
       return <Redirect to="/login" />;
     }
-    console.log(this.props.taskList);
-    const taskHeadings = (
-      <li key="task-headings" className="project-archive__main">
-        <div className="project-archive__flex-child-start">
-          <h3 className="project-archive__title hidden">Headings</h3>
-        </div>
 
-        <div className="project-archive__flex-child-end">
-          <p>STATUS</p>
-          <p>NOTES</p>
-          <p>DATE</p>
-          <p>HOURS LOGGED</p>
-        </div>
-      </li>
-    );
     const taskList = this.props.taskList.map(task => (
       <li key={task._id} className="project-archive__main">
         <div className="project-archive__flex-child-start">
@@ -49,7 +35,10 @@ class ProjectArchive extends React.Component {
             {task.notes.length === 1 ? <span>note</span> : <span>notes</span>}{" "}
           </p>
           <p>{task.date}</p>
-          <p>{task.practiceDuration}</p>
+          <p>
+            {task.practiceDuration}{" "}
+            {task.practiceDuration === 1 ? <span>hr</span> : <span>hrs</span>}{" "}
+          </p>
         </div>
       </li>
     ));
@@ -65,10 +54,7 @@ class ProjectArchive extends React.Component {
               <p>Loading...</p>
             </div>
           ) : this.props.taskList.length > 0 ? (
-            <ul className="project-archive">
-              <li>{taskHeadings}</li>
-              {taskList}
-            </ul>
+            <ul className="project-archive">{taskList}</ul>
           ) : (
             <p>You don't have any projects.</p>
           )}

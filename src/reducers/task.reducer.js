@@ -35,36 +35,25 @@ export default (state = initialState, action) => {
         })
       });
     case UPDATE_TASK_PRACTICE_SUCCESS:
+      const updateCurrentTask = state.currentTask;
+      updateCurrentTask.practiceDuration = action.practiceDuration;
       return Object.assign({}, state, {
-        taskList: state.taskList.map(task => {
-          if (task._id === action.id) {
-            task.practiceDuration = action.practiceDuration;
-          }
-          return task;
-        })
+        currentTask: updateCurrentTask
       });
 
     case RESET_TASK_PRACTICE_SUCCESS:
+      const updateCurrentTask3 = state.currentTask;
+      updateCurrentTask3.practiceDuration = 0;
       return Object.assign({}, state, {
-        taskList: state.taskList.map(task => {
-          if (task._id === action.id) {
-            task.practiceDuration = action.practiceDuration;
-          }
-          return task;
-        })
+        currentTask: updateCurrentTask3
       });
 
     case PUSH_TASK_NOTE:
+      const updateCurrentTask2 = state.currentTask;
+      updateCurrentTask2.notes = action.notes;
+      console.log(action.notes, "action.notes");
       return Object.assign({}, state, {
-        taskList: state.taskList.map(task => {
-          if (task._id === action.id) {
-            task.notes = [
-              { title: action.title, body: action.body },
-              ...state.notes
-            ];
-          }
-          return task;
-        })
+        currentTask: updateCurrentTask2
       });
 
     case GET_TASKS_REQUESTED:

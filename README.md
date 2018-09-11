@@ -4,7 +4,7 @@ Practica is a practice scheduler dedicated to helping musicians keep track of th
 
 ## Demo
 
-[Live Demo](https://calm-escarpment-51268.herokuapp.com/)
+[Live Demo](https://boiling-mountain-55806.herokuapp.com/)
 
 ### Demo user details:
 

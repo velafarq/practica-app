@@ -29,7 +29,7 @@ class Notepad extends React.Component {
       <Fragment>
         <section className="notepad__container">
           <div className="notepad__title__box">
-            <h2 className="notepad__title">NOTES</h2>
+            <h2 className="notepad__title">GENERAL NOTES</h2>
           </div>
           <form onSubmit={e => this.handleSubmit(e)} className="notepad">
             <textarea

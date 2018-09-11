@@ -26,7 +26,11 @@ class NotesView extends React.Component {
     return (
       <Fragment>
         <WeekNav />
+
         <main className="background">
+          <div className="day__title__box general-notes">
+            <h2 className="day__title general-notes__title">General Notes</h2>
+          </div>
           {this.props.isFetching ? (
             <div className="loading-message">
               <i className="fas fa-spinner" />

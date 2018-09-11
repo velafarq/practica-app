@@ -3,7 +3,7 @@
   border: 1px solid #eeeeef;
   border-radius: 3px;
   padding: 12px;
-  max-width: 500px;
+  max-width: 600px;
   max-height: 300px;
   overflow: auto;
 }
@@ -15,4 +15,8 @@
   text-decoration: underline;
 
   text-align: right;
+}
+
+.general-notes__title {
+  margin-top: 20px;
 }

@@ -51,7 +51,7 @@ export default (state = initialState, action) => {
     case PUSH_TASK_NOTE:
       const updateCurrentTask2 = state.currentTask;
       updateCurrentTask2.notes = action.notes;
-      console.log(action.notes, "action.notes");
+
       return Object.assign({}, state, {
         currentTask: updateCurrentTask2
       });

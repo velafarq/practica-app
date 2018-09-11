@@ -93,6 +93,7 @@ class TaskView extends React.Component {
               <textarea
                 className="project__notepad__textarea"
                 ref={this.note}
+                required
               />
               <button className="project__notepad__submit" type="submit">
                 SUBMIT

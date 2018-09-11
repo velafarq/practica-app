@@ -39,7 +39,6 @@ export const getTask = id => dispatch => {
       return res.json();
     })
     .then(task => {
-      console.log("task", task);
       if (task) {
         dispatch(action.getTaskSuccess(task));
         dispatch(action.isFetchingFalse());

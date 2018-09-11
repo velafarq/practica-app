@@ -16,5 +16,5 @@ const reducer = combineReducers({
 });
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-console.log(store);
+
 export default store;

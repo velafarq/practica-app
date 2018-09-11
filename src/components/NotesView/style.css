@@ -20,3 +20,6 @@
 .general-notes__title {
   margin-top: 20px;
 }
+.general-notes {
+  max-width: 650px;
+}

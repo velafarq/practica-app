@@ -89,7 +89,7 @@
   justify-content: space-between;
   height: auto;
   border-bottom: 1px solid #eeeeef;
-  font-size: 15px;
+  font-size: 16px;
   padding: 10px;
 }
 
@@ -116,8 +116,8 @@
   background-color: transparent;
 }
 
-.active-project {
-  color: orange;
+.tasks__task__del:hover {
+  opacity: 0.5;
 }
 
 .tasks__task__expand {
@@ -155,6 +155,14 @@
 
 .tasks__task__title--completed {
   color: lightgray;
+}
+
+.active-project {
+  color: orange;
+}
+
+.active-project:hover {
+  color: grey;
 }
 
 @media only screen and (min-width: 1000px) {

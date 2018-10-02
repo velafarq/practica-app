@@ -4,7 +4,7 @@
 
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+
   height: 100vh;
   min-height: 500px;
   display: flex;
@@ -47,7 +47,7 @@
 
 .about__title {
   color: rgb(8, 95, 117);
-  font-size: 1.5em;
+  font-size: 2em;
   letter-spacing: 2px;
   margin-bottom: 12px;
   margin-top: 70px;
@@ -55,16 +55,16 @@
 
 .about__body {
   font-size: 1em;
-
   max-width: 100vw;
   margin: 10px;
   color: rgb(8, 95, 117);
 }
 
-@media only screen and (min-width: 570px) {
-}
-
 @media only screen and (min-width: 900px) {
+  .info {
+    background-attachment: fixed;
+  }
+
   .about {
     height: 100vh;
     padding-bottom: 0;
@@ -104,13 +104,13 @@
 }
 
 .description__box__body {
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
 .description__box__title {
   margin: 0;
   padding: 0;
-  font-size: 1.2em;
+  font-size: 1.375em;
   width: 100%;
   display: flex;
   justify-content: center;

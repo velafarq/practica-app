@@ -4,6 +4,7 @@ import {
   UPDATE_TASK_PRACTICE_SUCCESS,
   RESET_TASK_PRACTICE_SUCCESS,
   PUSH_TASK_NOTE,
+  PULL_TASK_NOTE,
   GET_TASKS_REQUESTED,
   GET_TASKS_SUCCESS,
   GET_TASKS_ERROR,
@@ -54,6 +55,14 @@ export default (state = initialState, action) => {
 
       return Object.assign({}, state, {
         currentTask: updateCurrentTask2
+      });
+
+    case PULL_TASK_NOTE:
+      const updateCurrentTask4 = state.currentTask;
+      updateCurrentTask4.notes = action.notes;
+
+      return Object.assign({}, state, {
+        currentTask: updateCurrentTask4
       });
 
     case GET_TASKS_REQUESTED:

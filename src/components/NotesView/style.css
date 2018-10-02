@@ -6,11 +6,12 @@
   max-width: 600px;
   max-height: 300px;
   overflow: auto;
+  font-size: 1em;
 }
 
 .note__date {
   color: black;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 10px;
   text-align: right;
 }

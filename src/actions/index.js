@@ -49,6 +49,12 @@ export const pushTaskNote = notes => ({
   notes
 });
 
+export const PULL_TASK_NOTE = "PULL_TASK_NOTE";
+export const pullTaskNote = notes => ({
+  type: PULL_TASK_NOTE,
+  notes
+});
+
 export const RESET_TASK_PRACTICE_SUCCESS = "REST_TASK_PRACTICE_SUCCESS";
 export const resetTaskPracticeSuccess = () => ({
   type: RESET_TASK_PRACTICE_SUCCESS
@@ -84,6 +90,12 @@ export const ADD_NOTE = "ADD_NOTE";
 export const addNote = note => ({
   type: ADD_NOTE,
   note
+});
+
+export const REMOVE_NOTE = "REMOVE_NOTE";
+export const removeNote = id => ({
+  type: REMOVE_NOTE,
+  id
 });
 
 export const TOTAL_PRACTICE_DURATION = "TOTAL_PRACTICE_DURATION";

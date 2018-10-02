@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import WeekNav from "../WeekNav/index";
 import Stats from "../Stats/index";
 
-import { pushTaskNote, getTask } from "../../actions/requests";
+import { pushTaskNote, getTask, pullTaskNote } from "../../actions/requests";
 
 import "./style.css";
 
@@ -33,6 +33,11 @@ class TaskView extends React.Component {
     this.props.dispatch(pushTaskNote(id, title, note));
   }
 
+  handleNotePull(e, taskId, noteId) {
+    e.preventDefault();
+    this.props.dispatch(pullTaskNote(taskId, noteId));
+  }
+
   renderNotes() {
     let body;
     if (this.props.currentTask.notes) {
@@ -45,6 +50,19 @@ class TaskView extends React.Component {
             <div className="project__note__content">{note.body}</div>
             <div className="project__note__date">
               {new Date(note.date).toDateString()}
+              <button
+                title="delete"
+                className="tasks__task__del"
+                onClick={e =>
+                  this.handleNotePull(
+                    e,
+                    this.props.match.params.projectId,
+                    note._id
+                  )
+                }
+              >
+                <i className="fas fa-times" />
+              </button>
             </div>
           </li>
         ));

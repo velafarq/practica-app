@@ -197,6 +197,31 @@ export const pushTaskNote = (id, title, body) => dispatch => {
     });
 };
 
+export const pullTaskNote = (taskId, noteId) => dispatch => {
+  dispatch(action.isFetchingTrue());
+  const data = JSON.stringify({
+    _id: noteId
+  });
+
+  return fetch(`${API_BASE_URL}/tasks/${taskId}/notes/pull`, {
+    method: "PUT",
+    headers: new Headers({
+      "Content-Type": "application/json",
+      Authorization: `bearer ${localStorage.getItem("token")}`
+    }),
+    body: data
+  })
+    .then(res => res.json())
+    .then(res => {
+      dispatch(action.pullTaskNote(res.notes));
+      dispatch(action.isFetchingFalse());
+    })
+    .catch(error => {
+      dispatch(action.errorTrue());
+      console.log(error);
+    });
+};
+
 export const getNotes = () => dispatch => {
   dispatch(action.getNotesRequested());
   dispatch(action.isFetchingTrue());
@@ -235,6 +260,27 @@ export const addNote = content => dispatch => {
     .then(note => {
       dispatch(action.addNote(note));
       dispatch(action.isFetchingFalse());
+    })
+    .catch(err => {
+      dispatch(action.errorTrue());
+      console.log(err);
+    });
+};
+
+export const removeNote = id => dispatch => {
+  dispatch(action.isFetchingTrue());
+  return fetch(`${API_BASE_URL}/notes/${id}`, {
+    method: "DELETE",
+    headers: new Headers({
+      Authorization: `bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json"
+    })
+  })
+    .then(res => res.json())
+    .then(task => {
+      dispatch(action.isFetchingFalse());
+      dispatch(action.errorFalse());
+      dispatch(action.removeNote(id));
     })
     .catch(err => {
       dispatch(action.errorTrue());

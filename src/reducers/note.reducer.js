@@ -1,5 +1,6 @@
 import {
   ADD_NOTE,
+  REMOVE_NOTE,
   GET_NOTES_ERROR,
   GET_NOTES_REQUESTED,
   GET_NOTES_SUCCESS
@@ -14,6 +15,11 @@ export default (state = initialState, action) => {
     case ADD_NOTE:
       return Object.assign({}, state, {
         notes: [action.note, ...state.notes]
+      });
+
+    case REMOVE_NOTE:
+      return Object.assign({}, state, {
+        notes: state.notes.filter(note => note._id !== action.id)
       });
     case GET_NOTES_REQUESTED:
       return Object.assign({}, state, {});

@@ -54,7 +54,7 @@ class TaskSection extends React.Component {
             className="tasks__task__check"
             onClick={e => this.handleStatusChange(e, task._id, task.status)}
           >
-            <i className="far fa-circle" />
+            <i className="far fa-circle inactive-project" />
           </button>
           <label className="tasks__task__title--completed">{task.task}</label>
         </div>

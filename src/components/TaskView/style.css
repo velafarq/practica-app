@@ -33,6 +33,9 @@
   text-align: left;
   text-transform: uppercase;
 }
+.project__container {
+  min-width: 600px;
+}
 
 .project__notes {
   box-sizing: border-box;

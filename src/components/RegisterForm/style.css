@@ -5,7 +5,7 @@ a {
 
 .block__entry {
   height: 90vh;
-
+  min-height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +23,6 @@ a {
 }
 
 .block__entry__form__title {
-  text-decoration: underline;
   color: rgb(8, 95, 117);
   font-size: 1.5em;
   letter-spacing: 2px;
@@ -109,7 +108,6 @@ a {
 }
 .demo-user h3 {
   font-weight: lighter;
-  text-decoration: underline;
 }
 
 .demo-user p {

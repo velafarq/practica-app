@@ -1,42 +1,8 @@
-☐ create reducer for register and login
-    ☐ is the user logged in
-    ☐ is the user registered
-    ☐ password
-    ☐ first name
-    ☐ last name
-    ☐ email address
-
-☐ create reducer and actions for stats
-    ☐ practice true/false
-    ☐ practice hours
-    ☐ no. of tasks completed
-    ☐ goals met
-    ☐ notes
+☐ Remove underlines from non links
+☐ Add delete and edit features to all notes
+☐ Add edit feature to project title 
+☐ Fix order of notes in general notes
+☐ Add a BPM section in stats
+☐ Increase font size for mobile view and fix margin issues noted in review.
 
 
-☐ fix css on day page
-
-☐ create goals area
-
-
-
-Questions:
-    ☐ 1. Should the tasklist be within the
-    reducer for the stats to keep all the info together? Because the stats are 
-    based on all that stuff
-
-
-  
-  taskIndex: 0,
-  taskList: [
-        {
-        task: "",
-        completed: false
-        }
-  ],
-  notes: [{
-      notes: ""
-  }],
-  practiceStatus: false,
-  practiceHours: 0,
-  goals: []

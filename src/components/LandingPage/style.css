@@ -1,11 +1,12 @@
 .info {
   width: 100vw;
   background-image: url("../../assets/images/chloe-guitar_Fotor.png");
-  /* background-position: center; */
+
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   height: 100vh;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,17 +42,15 @@
   align-items: center;
   text-align: center;
   padding-bottom: 60px;
+  min-height: 700px;
 }
 
 .about__title {
-  /* font-family: "Handlee", cursive; */
-  text-decoration: underline;
   color: rgb(8, 95, 117);
   font-size: 1.5em;
   letter-spacing: 2px;
-  margin-bottom: 0;
+  margin-bottom: 12px;
   margin-top: 70px;
-  /* text-decoration-style: double; */
 }
 
 .about__body {

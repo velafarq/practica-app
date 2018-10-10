@@ -60,7 +60,7 @@
   color: rgb(8, 95, 117);
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1000px) {
   .info {
     background-attachment: fixed;
   }

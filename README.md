@@ -23,6 +23,7 @@ password: demouser2018
 - View your practice stats
 - Keep track of your notes
 - Utilizes GET, POST, PUT and DELETE API endpoints to interact with projects, hourly practice logs, and notes.
+- View server-side code: https://github.com/velafarq/practica-api
 
 ## Screenshots
 
